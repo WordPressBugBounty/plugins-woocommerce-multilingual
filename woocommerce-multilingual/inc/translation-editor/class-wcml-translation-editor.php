@@ -14,14 +14,11 @@ class WCML_Translation_Editor {
 	private $sitepress;
 	/** @var wpdb */
 	private $wpdb;
-	/** @var SyncHash */
-	private $syncHashManager;
 
-	public function __construct( woocommerce_wpml $woocommerce_wpml, $sitepress, wpdb $wpdb, SyncHash $syncHashManager ) {
+	public function __construct( woocommerce_wpml $woocommerce_wpml, $sitepress, wpdb $wpdb ) {
 		$this->woocommerce_wpml = $woocommerce_wpml;
 		$this->sitepress        = $sitepress;
 		$this->wpdb             = $wpdb;
-		$this->syncHashManager  = $syncHashManager;
 	}
 
 	public function add_hooks() {
@@ -54,12 +51,31 @@ class WCML_Translation_Editor {
 		add_action( 'wp_ajax_wcml_editor_auto_slug', [ $this, 'auto_generate_slug' ] );
 
 		add_filter( 'wpml_tm_show_page_builders_translation_editor_warning', [ $this, 'show_page_builders_translation_editor_warning' ], 10, 2 );
+		add_filter( 'wpml_translation_editor_save_job_data', [ $this, 'set_ctp_as_editor_for_this_product' ] );
+	}
+
+	/**
+	 * @param array $data
+	 *
+	 * @return array
+	 */
+	public function set_ctp_as_editor_for_this_product( $data ) {
+		if ( 'post_product' === $data['job_post_type'] ) {
+			/**
+			 * @param int $job_id
+			 */
+			add_action( 'wpml_save_job_fields_from_post', function ( $job_id ) {
+				wpml_tm_load_old_jobs_editor()->set( $job_id, 'wpml' );
+			} );
+		}
+
+		return $data;
 	}
 
 	public function fetch_translation_job_for_editor( $job, $job_details ) {
 
 		if ( 'post_product' === $job_details['job_type'] ) {
-			$job = new WCML_Editor_UI_Product_Job( $job_details, $this->woocommerce_wpml, $this->sitepress, $this->wpdb, $this->syncHashManager );
+			$job = new WCML_Editor_UI_Product_Job( $job_details, $this->woocommerce_wpml, $this->sitepress, $this->wpdb );
 		}
 
 		return $job;
@@ -387,7 +403,7 @@ class WCML_Translation_Editor {
 				$suffix = 2;
 				do {
 
-					$alt_post_name   = _truncate_post_slug( $post_name, 200 - ( strlen( $suffix ) + 1 ) ) . "-$suffix";
+					$alt_post_name   = _truncate_post_slug( $post_name, 200 - ( strlen( (string) $suffix ) + 1 ) ) . "-$suffix";
 					$post_name_check = $wpdb->get_var( $wpdb->prepare( $check_sql, $alt_post_name, $lang ) );
 					$suffix++;
 

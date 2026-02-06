@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit7d8fd38c9a7856dfb5c921ab4fedbe59
+class ComposerStaticInit90cb08de9ed891fcce821762c0583d08
 {
     public static $files = array (
         'b45b351e6b6f7487d819961fef2fda77' => __DIR__ . '/..' . '/jakeasmith/http_build_url/src/http_build_url.php',
@@ -136,6 +136,8 @@ class ComposerStaticInit7d8fd38c9a7856dfb5c921ab4fedbe59
         'WCML\\DownloadableFiles\\SyncDownloadableFilesFromATE' => __DIR__ . '/../..' . '/classes/DownloadableFiles/SyncDownloadableFilesFromATE.php',
         'WCML\\Email\\Factory' => __DIR__ . '/../..' . '/classes/Email/Factory.php',
         'WCML\\Email\\Settings\\TranslationControls' => __DIR__ . '/../..' . '/classes/Email/Settings/TranslationControls.php',
+        'WCML\\Endpoints\\Factory' => __DIR__ . '/../..' . '/classes/Endpoints/Factory.php',
+        'WCML\\Endpoints\\Settings\\TranslationControls' => __DIR__ . '/../..' . '/classes/Endpoints/Settings/TranslationControls.php',
         'WCML\\Exporter\\AllLanguagesHooks' => __DIR__ . '/../..' . '/classes/Exporter/AllLanguagesHooks.php',
         'WCML\\Exporter\\AttributeHeadersHooks' => __DIR__ . '/../..' . '/classes/Exporter/AttributeHeadersHooks.php',
         'WCML\\HomeScreen\\Factory' => __DIR__ . '/../..' . '/classes/HomeScreen/Factory.php',
@@ -215,6 +217,7 @@ class ComposerStaticInit7d8fd38c9a7856dfb5c921ab4fedbe59
         'WCML\\Permalinks\\Settings\\TranslationControls' => __DIR__ . '/../..' . '/classes/Permalinks/Settings/TranslationControls.php',
         'WCML\\Permalinks\\Strings' => __DIR__ . '/../..' . '/classes/Permalinks/Strings.php',
         'WCML\\PointerUi\\Factory' => __DIR__ . '/../..' . '/classes/PointerUi/Factory.php',
+        'WCML\\PostHog\\Hooks' => __DIR__ . '/../..' . '/classes/PostHog/Hooks.php',
         'WCML\\Products\\Hooks' => __DIR__ . '/../..' . '/classes/product/Hooks.php',
         'WCML\\Reports\\Categories\\Query' => __DIR__ . '/../..' . '/classes/Reports/Categories/Query.php',
         'WCML\\Reports\\Hooks' => __DIR__ . '/../..' . '/classes/Reports/Hooks.php',
@@ -251,7 +254,6 @@ class ComposerStaticInit7d8fd38c9a7856dfb5c921ab4fedbe59
         'WCML\\Reviews\\Translations\\Factory' => __DIR__ . '/../..' . '/classes/Reviews/Translations/Factory.php',
         'WCML\\Reviews\\Translations\\FrontEndHooks' => __DIR__ . '/../..' . '/classes/Reviews/Translations/FrontEndHooks.php',
         'WCML\\Reviews\\Translations\\Mapper' => __DIR__ . '/../..' . '/classes/Reviews/Translations/Mapper.php',
-        'WCML\\RewriteRules\\ChildMyAccountHooks' => __DIR__ . '/../..' . '/classes/RewriteRules/ChildMyAccountHooks.php',
         'WCML\\RewriteRules\\Hooks' => __DIR__ . '/../..' . '/classes/RewriteRules/Hooks.php',
         'WCML\\Setup\\BeforeHooks' => __DIR__ . '/../..' . '/classes/wcml-setup/BeforeHooks.php',
         'WCML\\StandAlone\\ActionFilterLoader' => __DIR__ . '/../..' . '/classes/StandAlone/ActionFilterLoader.php',
@@ -409,7 +411,6 @@ class ComposerStaticInit7d8fd38c9a7856dfb5c921ab4fedbe59
         'WCML_Settings_UI' => __DIR__ . '/../..' . '/inc/template-classes/class-wcml-settings-ui.php',
         'WCML_Setup' => __DIR__ . '/../..' . '/classes/wcml-setup/class-wcml-setup.php',
         'WCML_Setup_Attributes_UI' => __DIR__ . '/../..' . '/inc/template-classes/setup/class-wcml-setup-attributes-ui.php',
-        'WCML_Setup_Display_As_Translated_UI' => __DIR__ . '/../..' . '/inc/template-classes/setup/class-wcml-setup-display-as-translated-ui.php',
         'WCML_Setup_Footer_UI' => __DIR__ . '/../..' . '/inc/template-classes/setup/class-wcml-setup-footer.php',
         'WCML_Setup_Handlers' => __DIR__ . '/../..' . '/classes/wcml-setup/class-wcml-setup-handlers.php',
         'WCML_Setup_Header_UI' => __DIR__ . '/../..' . '/inc/template-classes/setup/class-wcml-setup-header.php',
@@ -483,9 +484,9 @@ class ComposerStaticInit7d8fd38c9a7856dfb5c921ab4fedbe59
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit7d8fd38c9a7856dfb5c921ab4fedbe59::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit7d8fd38c9a7856dfb5c921ab4fedbe59::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit7d8fd38c9a7856dfb5c921ab4fedbe59::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit90cb08de9ed891fcce821762c0583d08::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit90cb08de9ed891fcce821762c0583d08::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit90cb08de9ed891fcce821762c0583d08::$classMap;
 
         }, null, ClassLoader::class);
     }
