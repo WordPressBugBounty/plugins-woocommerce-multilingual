@@ -138,7 +138,7 @@ class Attributes extends SynchronizerForMeta {
 					$sanitizedAttributeName  = wc_sanitize_taxonomy_name( $attribute );
 					$defaultTerm             = $this->woocommerceWpml->terms->wcml_get_term_by_slug( $defaultAttributeValue, $sanitizedAttributeName );
 					$defaultTermTranslations = $defaultTerm
-						? $this->elementTranslations->get_element_translations( $defaultTerm->term_taxonomy_id, false, true )
+						? $this->elementTranslations->get_element_translations( $defaultTerm->term_taxonomy_id, false, false )
 						: [];
 
 					foreach ( $translationsLanguages as $translationId => $language ) {

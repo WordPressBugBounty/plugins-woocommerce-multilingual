@@ -100,10 +100,13 @@ class WCML_Endpoints {
 
 				if ( $existing_string_id ) {
 
+					// phpcs:disable WordPress.DB.PreparedSQL.NotPrepared, WordPress.DB.PreparedSQL.InterpolatedNotPrepared
 					$existing_wcml_string_id = $this->wpdb->get_var(
-						$this->wpdb->prepare( "SELECT id FROM {$this->wpdb->prefix}icl_strings
-											WHERE context = %s AND name = %s",
-						'WooCommerce Endpoints', $endpoint_key )
+						$this->wpdb->prepare(
+							"SELECT id FROM {$this->wpdb->prefix}icl_strings WHERE context = %s AND name = %s",
+							WCML_Url_Translation::WC_STRING_CONTEXT,
+							$endpoint_key
+						)
 					);
 
 					if ( $existing_wcml_string_id ) {
@@ -117,11 +120,16 @@ class WCML_Endpoints {
 					}
 				} else {
 
+					// phpcs:disable WordPress.DB.PreparedSQL.NotPrepared, WordPress.DB.PreparedSQL.InterpolatedNotPrepared
 					$this->wpdb->query(
-						$this->wpdb->prepare( "UPDATE {$this->wpdb->prefix}icl_strings
+						$this->wpdb->prepare(
+							"UPDATE {$this->wpdb->prefix}icl_strings
                                   SET context = %s
-                                  WHERE context = 'WooCommerce Endpoints' AND name = %s",
-						WPML_Endpoints_Support::STRING_CONTEXT, $endpoint_key )
+                                  WHERE context = %s AND name = %s",
+							WPML_Endpoints_Support::STRING_CONTEXT,
+							WCML_Url_Translation::WC_STRING_CONTEXT,
+							$endpoint_key
+						)
 					);
 
 					$string_id = $this->wpdb->get_var( $this->wpdb->prepare( "SELECT id FROM {$this->wpdb->prefix}icl_strings WHERE context = %s AND name = %s", WPML_Endpoints_Support::STRING_CONTEXT, $endpoint_key ) );

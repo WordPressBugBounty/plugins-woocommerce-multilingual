@@ -29,17 +29,24 @@ class SyncDownloadableFilesFromATE {
 			$needUpdate     = false;
 			$orig_file_path = maybe_unserialize( get_post_meta( $product_id, \WCML_Downloadable_Products::DOWNLOADABLE_FILES_META, true ) );
 
+			if ( ! is_array( $orig_file_path ) ) {
+				$orig_file_path = [];
+			}
+
 			foreach ( $downloadableFiles as $downloadableFileId => $downloadableFile ) {
 				$id = str_replace( \WCML_Synchronize_Product_Data::CUSTOM_FIELD_KEY_SEPARATOR, '-', $downloadableFileId );
 
-				if ( isset( $orig_file_path[ $id ] ) ) {
-					$orig_file_path[ $id ] = array_merge( $orig_file_path[ $id ], [
-						'name' => $downloadableFile['name'],
-						'file' => $downloadableFile['file'],
-					] );
+				$translatedDownloadableFileData = [
+					'name' => $downloadableFile['name'],
+					'file' => $downloadableFile['file'],
+				];
 
-					$needUpdate = true;
+				if ( isset( $orig_file_path[ $id ] ) ) {
+					$translatedDownloadableFileData = array_merge( $orig_file_path[ $id ], $translatedDownloadableFileData );
 				}
+
+				$orig_file_path[ $id ] = $translatedDownloadableFileData;
+				$needUpdate            = true;
 			}
 
 			if ( $needUpdate ) {

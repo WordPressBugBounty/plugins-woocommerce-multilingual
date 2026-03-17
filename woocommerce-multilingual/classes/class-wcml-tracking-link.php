@@ -15,7 +15,7 @@ class WCML_Tracking_Link {
 	const WCML_MULTI_CURRENCY_DOC        = 'https://wpml.org/documentation/related-projects/woocommerce-multilingual/multi-currency-support-woocommerce/';
 	const WCML_CLEAR_CART_DOC            = 'https://wpml.org/documentation/related-projects/woocommerce-multilingual/clearing-cart-contents-when-language-or-currency-change/';
 	const WCML_DISPLAY_AS_TRANSLATED_DOC = 'https://wpml.org/documentation/related-projects/woocommerce-multilingual/displaying-untranslated-products-in-secondary-languages/';
-	const WCML_TRANSLATE_EMAILS_DOC      = 'https://wpml.org/documentation/related-projects/woocommerce-multilingual/how-to-translate-woocommerce-emails/';
+	const WCML_TRANSLATE_EMAILS_DOC      = 'https://wpml.org/documentation/related-projects/woocommerce-multilingual/how-to-translate-woocommerce';
 	const WCML_TRANSLATE_EMAILS_CAMPAIGN = 'woocommerce-emails';
 
 	// WCML compatibility links.
@@ -155,7 +155,7 @@ class WCML_Tracking_Link {
 	public static function getWcmlTranslateEmailsDoc() {
 		return self::generate( self::WCML_TRANSLATE_EMAILS_DOC, false, [
 			'utm_campaign' => self::WCML_TRANSLATE_EMAILS_CAMPAIGN,
-		] );
+		] ) . '#translate-woocommerce-emails';
 	}
 
 	/**

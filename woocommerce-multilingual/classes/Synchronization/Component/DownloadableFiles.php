@@ -30,14 +30,28 @@ class DownloadableFiles extends SynchronizerForMeta {
 		$generalProductSync = $this->woocommerceWpml->settings[ WCML_Downloadable_Products::SYNC_MODE_SETTING_KEY ];
 		$customProductSync  = get_post_meta( $productId, WCML_Downloadable_Products::SYNC_MODE_META, true );
 
-		if (
-			$customProductSync === WCML_Downloadable_Products::SYNC_MODE_META_SELF
-			|| ( ! $customProductSync && ! $generalProductSync)
-		) {
-			$this->synchronizeMeta( $productId, $translationsIds, WCML_Downloadable_Products::DOWNLOADABLE_FILES_META );
-		} elseif ( ( $customProductSync && $customProductSync === WCML_Downloadable_Products::SYNC_MODE_META_AUTO ) || $generalProductSync ) {
+		if ( $this->isSyncOn( $generalProductSync, $customProductSync ) ) {
 			$this->synchronizeMeta( $productId, $translationsIds, WCML_Downloadable_Products::DOWNLOADABLE_FILES_META );
 		}
 	}
 
+	/**
+	 * @param string $generalProductSync
+	 * @param string $customProductSync
+	 */
+	private function isSyncOn( $generalProductSync, $customProductSync ): bool {
+		if ( WCML_Downloadable_Products::SYNC_MODE_META_AUTO === $customProductSync ) {
+			return true;
+		}
+
+		if ( WCML_Downloadable_Products::SYNC_MODE_META_SELF === $customProductSync ) {
+			return false;
+		}
+
+		if ( WCML_Downloadable_Products::SYNC_MODE_SETTING_AUTO === $generalProductSync ) {
+			return true;
+		}
+
+		return false;
+	}
 }

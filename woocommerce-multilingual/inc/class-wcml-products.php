@@ -73,7 +73,7 @@ class WCML_Products {
 			add_filter( 'woocommerce_pre_customer_bought_product', Fns::withoutRecursion( Fns::identity(), [ $this, 'is_customer_bought_product' ] ), 10, 4 );
 		}
 
-		add_filter( 'get_post_metadata', [ $this, 'filter_product_data' ], 10, 3 );
+		add_filter( 'get_post_metadata', [ $this, 'filter_product_data' ], PHP_INT_MAX, 3 );
 		add_filter( 'woocommerce_can_reduce_order_stock', [ $this, 'remove_post_meta_data_filter_on_checkout_stock_update' ] );
 	}
 
@@ -776,7 +776,7 @@ class WCML_Products {
 			$post_type = get_post_type( $product_id );
 
 			if ( in_array( $post_type, [ 'product', 'product_variation' ], true ) ) {
-				remove_filter( 'get_post_metadata', [ $this, 'filter_product_data' ], 10 );
+				remove_filter( 'get_post_metadata', [ $this, 'filter_product_data' ], PHP_INT_MAX );
 
 				$data                = get_post_meta( $product_id );
 				$meta_keys_to_filter = [];
@@ -806,7 +806,7 @@ class WCML_Products {
 					$data[ $meta_key ][0] = get_post_meta( $product_id, $meta_key, true );
 				}
 
-				add_filter( 'get_post_metadata', [ $this, 'filter_product_data' ], 10, 3 );
+				add_filter( 'get_post_metadata', [ $this, 'filter_product_data' ], PHP_INT_MAX, 3 );
 			}
 		}
 
@@ -851,7 +851,7 @@ class WCML_Products {
 	 */
 	public function remove_post_meta_data_filter_on_checkout_stock_update( $reduce_stock ) {
 		if ( isset( $_GET['wc-ajax'] ) && 'checkout' === $_GET['wc-ajax'] ) {
-			remove_filter( 'get_post_metadata', [ $this, 'filter_product_data' ], 10 );
+			remove_filter( 'get_post_metadata', [ $this, 'filter_product_data' ], PHP_INT_MAX );
 		}
 		return $reduce_stock;
 	}

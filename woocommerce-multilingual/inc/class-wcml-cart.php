@@ -379,8 +379,7 @@ class WCML_Cart {
 			if ( false !== $currency ) {
 				$cart->cart_contents[ $key ]['data']->price = get_post_meta( $cart_item['product_id'], '_price', 1 );
 			}
-
-			$display_as_translated = apply_filters( 'wpml_is_display_as_translated_post_type', false, 'product' );
+			$display_as_translated = $this->woocommerce_wpml->products->is_product_display_as_translated_post_type();
 			if ( $cart_item['product_id'] == $tr_product_id || ( $display_as_translated && ! $tr_product_id ) ) {
 				$new_cart_data[ $key ]              = apply_filters( 'wcml_cart_contents_not_changed', $cart->cart_contents[ $key ], $key, $current_language );
 				$new_cart_data[ $key ]['data_hash'] = $this->get_data_cart_hash( $cart_item );

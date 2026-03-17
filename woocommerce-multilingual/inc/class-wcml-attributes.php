@@ -798,16 +798,6 @@ class WCML_Attributes {
 	public function filter_product_variation_post_meta_attribute_values_in_current_language( $value, $object_id, $meta_key, $single ) {
 
 		if ( '' === $meta_key && 'product_variation' === get_post_type( $object_id ) ) {
-			$cache_key = $this->getCacheKey( $object_id );
-
-			if ( null === $value ) {
-				$cached_value = wp_cache_get( $cache_key, self::CACHE_GROUP_VARIATION );
-
-				if ( $cached_value ) {
-					return $cached_value;
-				}
-			}
-
 			remove_filter(
 				'get_post_metadata',
 				[
@@ -830,22 +820,36 @@ class WCML_Attributes {
 			);
 
 			if ( $all_meta ) {
-				foreach ( $all_meta as $meta_key => $meta_value ) {
-					if ( self::isAttributeMeta( $meta_key ) ) {
-						foreach ( $meta_value as $key => $value ) {
-							$all_meta[ $meta_key ][ $key ] = $this->get_attribute_term_translation_in_current_language( substr( $meta_key, 10 ), $value );
-						}
-					}
-				}
+				$wcml_meta = $this->get_product_variation_post_meta_attribute_translated_list( $object_id, $all_meta );
 
-				wp_cache_add( $cache_key, $all_meta, self::CACHE_GROUP_VARIATION );
-
-				return $all_meta;
+				return array_merge( $all_meta, $wcml_meta );
 			}
 		}
 
 		return $value;
+	}
 
+	private function get_product_variation_post_meta_attribute_translated_list( $object_id, $all_meta ): array {
+		$cache_key = $this->getCacheWCMLAttributeMetaKey( $object_id );
+
+		$cached_value = wp_cache_get( $cache_key, self::CACHE_GROUP_VARIATION );
+
+		if ( ! empty( $cached_value ) && is_array( $cached_value ) ) {
+			return $cached_value;
+		}
+
+		$wcml_meta = [];
+		foreach ( $all_meta as $meta_key => $meta_value ) {
+			if ( self::isAttributeMeta( $meta_key ) ) {
+				foreach ( $meta_value as $key => $value ) {
+					$wcml_meta[ $meta_key ][ $key ] = $this->get_attribute_term_translation_in_current_language( substr( $meta_key, 10 ), $value );
+				}
+			}
+		}
+
+		wp_cache_add( $cache_key, $wcml_meta, self::CACHE_GROUP_VARIATION );
+
+		return $wcml_meta;
 	}
 
 	/**
@@ -855,7 +859,7 @@ class WCML_Attributes {
 	 */
 	public function invalidateVariationMetaCache( $mid, $objectId, $key ) {
 		if ( self::isAttributeMeta( $key ) ) {
-			wp_cache_delete( $this->getCacheKey( $objectId ), self::CACHE_GROUP_VARIATION );
+			wp_cache_delete( $this->getCacheWCMLAttributeMetaKey( $objectId ), self::CACHE_GROUP_VARIATION );
 		}
 	}
 
@@ -873,8 +877,12 @@ class WCML_Attributes {
 	 *
 	 * @return string
 	 */
-	private function getCacheKey( $variationId ) {
-		return $this->sitepress->get_current_language() . $variationId;
+	private function getCacheWCMLAttributeMetaKey( $variationId ) {
+		return sprintf(
+			'product_variation_%d_post_meta_attribute_translated_%s',
+			$variationId,
+			$this->sitepress->get_current_language()
+		);
 	}
 
 	/**

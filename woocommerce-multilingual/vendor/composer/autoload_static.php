@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit90cb08de9ed891fcce821762c0583d08
+class ComposerStaticInit33ab987cdf741e5e0cc7d012cfda0fba
 {
     public static $files = array (
         'b45b351e6b6f7487d819961fef2fda77' => __DIR__ . '/..' . '/jakeasmith/http_build_url/src/http_build_url.php',
@@ -53,6 +53,8 @@ class ComposerStaticInit90cb08de9ed891fcce821762c0583d08
         'WCML\\Compatibility\\Aurum\\Factory' => __DIR__ . '/../..' . '/compatibility/Aurum/Factory.php',
         'WCML\\Compatibility\\Aurum\\MulticurrencyHooks' => __DIR__ . '/../..' . '/compatibility/Aurum/MulticurrencyHooks.php',
         'WCML\\Compatibility\\ComponentFactory' => __DIR__ . '/../..' . '/compatibility/ComponentFactory.php',
+        'WCML\\Compatibility\\FacebookForWc\\Factory' => __DIR__ . '/../..' . '/compatibility/FacebookForWc/Factory.php',
+        'WCML\\Compatibility\\FacebookForWc\\MultilingualHooks' => __DIR__ . '/../..' . '/compatibility/FacebookForWc/MultilingualHooks.php',
         'WCML\\Compatibility\\Flatsome\\Factory' => __DIR__ . '/../..' . '/compatibility/Flatsome/Factory.php',
         'WCML\\Compatibility\\GravityForms\\Factory' => __DIR__ . '/../..' . '/compatibility/GravityForms/Factory.php',
         'WCML\\Compatibility\\GravityForms\\MulticurrencyHooks' => __DIR__ . '/../..' . '/compatibility/GravityForms/MulticurrencyHooks.php',
@@ -133,6 +135,7 @@ class ComposerStaticInit90cb08de9ed891fcce821762c0583d08
         'WCML\\Coupons\\Helper' => __DIR__ . '/../..' . '/classes/Coupons/Helper.php',
         'WCML\\DisplayAsTranslated\\FrontendHooksFactory' => __DIR__ . '/../..' . '/classes/DisplayAsTranslated/FrontendHooksFactory.php',
         'WCML\\DisplayAsTranslated\\ProductCatHooks' => __DIR__ . '/../..' . '/classes/DisplayAsTranslated/ProductCatHooks.php',
+        'WCML\\DisplayAsTranslated\\ProductHooks' => __DIR__ . '/../..' . '/classes/DisplayAsTranslated/ProductHooks.php',
         'WCML\\DownloadableFiles\\SyncDownloadableFilesFromATE' => __DIR__ . '/../..' . '/classes/DownloadableFiles/SyncDownloadableFilesFromATE.php',
         'WCML\\Email\\Factory' => __DIR__ . '/../..' . '/classes/Email/Factory.php',
         'WCML\\Email\\Settings\\TranslationControls' => __DIR__ . '/../..' . '/classes/Email/Settings/TranslationControls.php',
@@ -305,6 +308,7 @@ class ComposerStaticInit90cb08de9ed891fcce821762c0583d08
         'WCML\\Utilities\\WCTaxonomies' => __DIR__ . '/../..' . '/classes/Utilities/WCTaxonomies.php',
         'WCML\\Utilities\\WcAdminPages' => __DIR__ . '/../..' . '/classes/Utilities/WcAdminPages.php',
         'WCML\\Utilities\\WpAdminPages' => __DIR__ . '/../..' . '/classes/Utilities/WpAdminPages.php',
+        'WCML\\WcEmailSettings\\MultilingualHooks' => __DIR__ . '/../..' . '/classes/WcEmailSettings/MultilingualHooks.php',
         'WCML_Accommodation_Bookings' => __DIR__ . '/../..' . '/compatibility/WcBookings/class-wcml-accommodation-bookings.php',
         'WCML_Admin_Cookie' => __DIR__ . '/../..' . '/classes/class-wcml-admin-cookie.php',
         'WCML_Admin_Currency_Selector' => __DIR__ . '/../..' . '/classes/currencies/class-wcml-admin-currency-selector.php',
@@ -484,9 +488,9 @@ class ComposerStaticInit90cb08de9ed891fcce821762c0583d08
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit90cb08de9ed891fcce821762c0583d08::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit90cb08de9ed891fcce821762c0583d08::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit90cb08de9ed891fcce821762c0583d08::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit33ab987cdf741e5e0cc7d012cfda0fba::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit33ab987cdf741e5e0cc7d012cfda0fba::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit33ab987cdf741e5e0cc7d012cfda0fba::$classMap;
 
         }, null, ClassLoader::class);
     }
