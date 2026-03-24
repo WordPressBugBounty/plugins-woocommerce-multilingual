@@ -66,7 +66,7 @@ class Post extends Synchronizer {
 		$productParentTranslations = $this->elementTranslations->get_element_translations( $productParent, false, true );
 		foreach ( $translationsData as $translationID => $translationData ) {
 			if ( ! in_array( (int) $translationData->post_parent, $productParentTranslations, true ) ) {
-				$translationLanguage = $translationsLanguages( $translationID ); 
+				$translationLanguage = $translationsLanguages[ $translationID ];
 				$translationParentId = (int) $this->elementTranslations->element_id_in( $productParent, $translationLanguage, false );
 				$this->wpdb->update(
 					$this->wpdb->posts,

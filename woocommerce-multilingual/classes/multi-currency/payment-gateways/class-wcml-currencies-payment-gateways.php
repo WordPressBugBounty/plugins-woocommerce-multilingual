@@ -149,7 +149,10 @@ class WCML_Currencies_Payment_Gateways {
 	public function filter_gateway_description( $description, $id ) {
 		$this->init_gateways();
 
-		if ( in_array( $id, array_keys( $this->supported_gateways ), true ) ) {
+		if (
+			in_array( $id, array_keys( $this->supported_gateways ), true )
+			&& in_array( $id, array_keys( $this->payment_gateways ), true )
+		) {
 
 			$client_currency  = $this->woocommerce_wpml->multi_currency->get_client_currency();
 			$default_currency = wcml_get_woocommerce_currency_option();
