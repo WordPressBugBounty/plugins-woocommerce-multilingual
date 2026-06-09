@@ -288,6 +288,7 @@ class WCML_Bookings implements \IWPML_Action {
 	public function duplicate_resource( $tr_product_id, $resource, $lang_code ) {
 		global $iclTranslationManagement;
 
+		/** @phpstan-ignore-next-line function.alreadyNarrowedType */
 		if ( method_exists( $this->sitepress, 'make_duplicate' ) ) {
 
 			$trns_resource_id = $this->sitepress->make_duplicate( $resource->resource_id, $lang_code );
@@ -419,6 +420,7 @@ class WCML_Bookings implements \IWPML_Action {
 	public function duplicate_person( $tr_product_id, $person_id, $lang_code ) {
 		global $iclTranslationManagement;
 
+		/** @phpstan-ignore-next-line function.alreadyNarrowedType */
 		if ( method_exists( $this->sitepress, 'make_duplicate' ) ) {
 
 			$new_person_id = $this->sitepress->make_duplicate( $person_id, $lang_code );

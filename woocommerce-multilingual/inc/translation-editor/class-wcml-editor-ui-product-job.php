@@ -439,7 +439,7 @@ class WCML_Editor_UI_Product_Job extends WPML_Editor_UI_Job {
 		}
 
 		foreach ( $this->product_images_ids as $image_id ) {
-			/** @var stdClass */
+			/** @var stdClass|mixed */
 			$attachment_data = $this->wpdb->get_row( $this->wpdb->prepare( "SELECT post_title, post_excerpt, post_content FROM {$this->wpdb->posts} WHERE ID = %d", $image_id ) );
 			if ( ! is_object( $attachment_data ) ) {
 				continue;

@@ -146,10 +146,10 @@ class WCML_WC_Subscriptions implements \IWPML_Action {
 	/**
 	 * Translate custom heading and subject for renewal notification
 	 *
-	 * @param string                             $return_value original string.
-	 * @param WCS_Email_Customer_Renewal_Invoice $obj Object of email class.
-	 * @param string                             $value Original value from setting.
-	 * @param string                             $key Name of the key.
+	 * @param string                                   $return_value original string.
+	 * @param WCS_Email_Customer_Renewal_Invoice|mixed $obj Object of email class.
+	 * @param string                                   $value Original value from setting.
+	 * @param string                                   $key Name of the key.
 	 * @return string Translated value or original value incase of not translated
 	 */
 	public function translate_heading_subject( $return_value, $obj, $value, $key ) {
@@ -167,8 +167,8 @@ class WCML_WC_Subscriptions implements \IWPML_Action {
 	/**
 	 * Add customer renewal invoice option to translate
 	 *
-	 * @param array $emails_options list of option to translate.
-	 * @return array $emails_options
+	 * @param array|mixed $emails_options list of option to translate.
+	 * @return array      $emails_options
 	 */
 	public function translate_email_options( $emails_options ) {
 

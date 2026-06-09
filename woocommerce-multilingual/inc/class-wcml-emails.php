@@ -238,6 +238,7 @@ class WCML_Emails {
 		if ( is_array( $order ) ) {
 			$order = $order['order_id'];
 		} elseif ( is_object( $order ) ) {
+			/** @phpstan-ignore-next-line function.alreadyNarrowedType */
 			$order = method_exists( 'WC_Order', 'get_id' ) ? $order->get_id() : $order->id;
 		}
 

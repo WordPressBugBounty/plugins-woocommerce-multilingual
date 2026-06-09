@@ -76,10 +76,10 @@ class WCML_YIKES_Custom_Product_Tabs implements \IWPML_Action {
 
 
 	/**
-	 * @param array  $data
-	 * @param int    $product_id
-	 * @param object $translation
-	 * @param string $lang
+	 * @param array        $data
+	 * @param int          $product_id
+	 * @param object|mixed $translation
+	 * @param string       $lang
 	 *
 	 * @return array
 	 */

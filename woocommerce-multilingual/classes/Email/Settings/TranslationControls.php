@@ -66,14 +66,14 @@ class TranslationControls extends TranslationControlsBase {
 		}
 
 		/**
-		 * @param array self::OPTION_NAMES
+		 * @param array $optionNames self::OPTION_NAMES
 		 *
 		 * @return array
 		 *
 		 * @see \WCML\Compatibility\WcBookings\Emails::add_hooks()
 		 * @see \WCML_WC_Subscriptions::add_hooks()
 		 */
-		$optionNames = apply_filters( 'wcml_emails_options_to_translate', self::OPTION_NAMES ); // @phpstan-ignore-line
+		$optionNames = apply_filters( 'wcml_emails_options_to_translate', self::OPTION_NAMES );
 
 		/**
 		 * Checks if a given option name provides content for the current email settings section.
@@ -84,14 +84,14 @@ class TranslationControls extends TranslationControlsBase {
 		 */
 		$isCurrentOptionSection = function( $option ) {
 			/**
-			 * @param string 'wc_email_'
-			 * @param string $option
+			 * @param string $section_prefix 'wc_email_'
+			 * @param string $emails_option
 			 *
 			 * @return string
 			 *
 			 * @see \WCML_WC_Subscriptions::add_hooks()
 			 */
-			$sectionPrefix = apply_filters( 'wcml_emails_section_name_prefix', 'wc_email_', $option ); // @phpstan-ignore-line
+			$sectionPrefix = apply_filters( 'wcml_emails_section_name_prefix', 'wc_email_', $option );
 			$sectionName   = str_replace( 'woocommerce_', $sectionPrefix, $option );
 			$sectionName   = str_replace( '_settings', '', $sectionName );
 			/**
@@ -198,13 +198,13 @@ class TranslationControls extends TranslationControlsBase {
 	 */
 	private function getEmailTextKeys() {
 		/**
-		 * @param array self::EMAIL_TEXT_KEYS
+		 * @param array $email_text_keys self::EMAIL_TEXT_KEYS
 		 *
 		 * @return array
 		 *
 		 * @see \WCML\Compatibility\WcBookings\Emails::add_hooks()
 		 */
-		return apply_filters( 'wcml_emails_text_keys_to_translate', self::EMAIL_TEXT_KEYS ); // @phpstan-ignore-line
+		return apply_filters( 'wcml_emails_text_keys_to_translate', self::EMAIL_TEXT_KEYS );
 	}
 
 	/**

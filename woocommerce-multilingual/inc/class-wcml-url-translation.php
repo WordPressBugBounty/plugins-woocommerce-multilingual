@@ -776,10 +776,10 @@ class WCML_Url_Translation {
 	/**
 	 * Currently, html links placed in the product category description are not always translated
 	 *
-	 * @param string  $term_description Raw description text.
-	 * @param WP_Term $term Term object for this taxonomy archive.
+	 * @param string|mixed $term_description Raw description text.
+	 * @param WP_Term      $term Term object for this taxonomy archive.
 	 *
-	 * @return string
+	 * @return string|mixed
 	 */
 	public function process_taxonomy_description_links( $term_description, $term ) {
 		if ( ! is_string( $term_description ) ) {

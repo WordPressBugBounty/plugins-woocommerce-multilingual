@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the WPML Multilingual & Multicurrency for WooCommerce plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPML Multilingual & Multicurrency for WooCommerce 5.5.4\n"
+"Project-Id-Version: WPML Multilingual & Multicurrency for WooCommerce 5.5.6\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/woocommerce-multilingual\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-01-27T22:50:49+01:00\n"
+"POT-Creation-Date: 2026-06-01T12:42:17+02:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: woocommerce-multilingual\n"
@@ -19,7 +19,7 @@ msgstr ""
 #. Plugin Name of the plugin
 #: wpml-woocommerce.php
 #: classes/AdminNotices/ExportImport.php:187
-#: inc/admin-menus/class-wcml-admin-menus.php:361
+#: inc/admin-menus/class-wcml-admin-menus.php:362
 msgid "WPML Multilingual & Multicurrency for WooCommerce"
 msgstr "WPML Multilingual & Multicurrency for WooCommerce"
 
@@ -139,13 +139,135 @@ msgid "Currency - no orders found"
 msgstr "מטבע - לא נמצאו הזמנות"
 
 #: classes/currencies/class-wcml-admin-currency-selector.php:107
-#: compatibility/WcBookings/MulticurrencyHooks.php:737
+#: compatibility/WcBookings/MulticurrencyHooks.php:733
 #: inc/class-wcml-orders.php:278
 #: inc/currencies/class-wcml-multi-currency-configuration.php:301
-#: inc/currencies/class-wcml-multi-currency-orders.php:436
+#: inc/currencies/class-wcml-multi-currency-orders.php:437
 #: inc/currencies/class-wcml-multi-currency-reports.php:138
 msgid "Invalid nonce"
 msgstr "nonce לא חוקי"
+
+#: classes/EditorScopedSync/Notices.php:190
+msgid "WPML synced translations for product-level changes only."
+msgstr "WPML סינכרן תרגומים עבור שינויים ברמת המוצר בלבד."
+
+#. translators: 1: number of synced variations, 2: total variations in product
+#: classes/EditorScopedSync/Notices.php:194
+msgid "WPML synced translations for %1$d of %2$d variations."
+msgstr "WPML סינכרן תרגומים עבור %1$d מתוך %2$d וריאציות."
+
+#. translators: %d: number of variations that were not checked
+#: classes/EditorScopedSync/Notices.php:208
+msgid "%d other variation was not checked because its data didn't change here."
+msgid_plural "%d other variations were not checked because their data didn't change here."
+msgstr[0] "וריאציה %d אחרת לא נבדקה מכיוון שנתוניה לא השתנו כאן."
+msgstr[1] "%d וריאציות אחרות לא נבדקו מכיוון שנתוניהן לא השתנו כאן."
+
+#. translators: %s: "Force update all" label
+#: classes/EditorScopedSync/Notices.php:222
+msgid "If you've made changes <strong>outside this editor</strong> (for example, retranslating an attribute term), use <em>%s</em> below to make sure every translation is current."
+msgstr "אם ביצעת שינויים <strong>מחוץ לעורך זה</strong> (לדוגמה, תרגום מחדש של מונח מאפיין), השתמש ב-<em>%s</em> למטה כדי לוודא שכל תרגום עדכני."
+
+#: classes/EditorScopedSync/Notices.php:223
+msgid "Force update all"
+msgstr "עדכן הכל בכפייה"
+
+#: classes/EditorScopedSync/Notices.php:229
+msgid "Force update all variation translations"
+msgstr "עדכן בכפייה את כל תרגומי הווריאציות"
+
+#. translators: %s: link to the WCML Settings page
+#: classes/EditorScopedSync/Notices.php:236
+msgid "You can switch to <em>\"Always check all variations\"</em> on the %s."
+msgstr "באפשרותך לעבור ל-<em>\"תמיד בדוק את כל הווריאציות\"</em> בדף %s."
+
+#: classes/EditorScopedSync/Notices.php:240
+#: classes/EditorScopedSync/Notices.php:427
+msgid "WCML Settings page"
+msgstr "דף ההגדרות של WCML"
+
+#: classes/EditorScopedSync/Notices.php:241
+#: classes/EditorScopedSync/Notices.php:428
+msgid "(opens in a new tab)"
+msgstr "(נפתח בלשונית חדשה)"
+
+#: classes/EditorScopedSync/Notices.php:255
+msgid "Syncing all variations…"
+msgstr "מסנכרן את כל הווריאציות…"
+
+#: classes/EditorScopedSync/Notices.php:266
+msgid "Done — all variations synced"
+msgstr "הסתיים — כל הווריאציות סונכרנו"
+
+#: classes/EditorScopedSync/Notices.php:269
+msgid "Sync completed for product #%d."
+msgstr "הסינכרון הושלם עבור מוצר #%d."
+
+#: classes/EditorScopedSync/Notices.php:272
+msgid "Failed — see console"
+msgstr "נכשל — ראה קונסולה"
+
+#: classes/EditorScopedSync/Notices.php:276
+msgid "Error — "
+msgstr "שגיאה — "
+
+#: classes/EditorScopedSync/Notices.php:398
+#: inc/admin-menus/class-wcml-admin-menus.php:300
+#: inc/class-wcml-cart-sync-warnings.php:90
+msgid "Dismiss"
+msgstr "בטל"
+
+#. translators: 1: number of variations checked, 2: number of translation languages
+#: classes/EditorScopedSync/Notices.php:403
+msgid "WPML verified %1$d variation × %2$d language on this save. None of them had changes that needed syncing."
+msgid_plural "WPML verified %1$d variations × %2$d languages on this save. None of them had changes that needed syncing."
+msgstr[0] "WPML אימת וריאציה %1$d × שפת %2$d בשמירה זו. אף אחת מהן לא כללה שינויים שדרשו סנכרון."
+msgstr[1] "WPML אימת %1$d וריאציות × שפות %2$d בשמירה זו. אף אחת מהן לא כללה שינויים שדרשו סנכרון."
+
+#: classes/EditorScopedSync/Notices.php:416
+msgid "That's wasted work. Switching to <em>\"Only sync variations edited in the editor\"</em> would make saves like this much faster — WPML will only sync the variations you actually changed and tell you what was skipped."
+msgstr "זו עבודה מבוזבזת. מעבר ל-<em>\"סנכרן רק וריאציות שנערכו בעורך\"</em> יהפוך שמירות כאלה למהירות הרבה יותר — WPML יסנכרן רק את הווריאציות ששינית בפועל ויודיע לך מה דולג."
+
+#. translators: %s: link to the WCML Settings page
+#: classes/EditorScopedSync/Notices.php:423
+msgid "You can switch on the %s."
+msgstr "באפשרותך לעבור לדף %s."
+
+#: classes/EditorScopedSync/Notices.php:434
+msgid "Don't show this again on this site"
+msgstr "אל תציג זאת שוב באתר זה"
+
+#: classes/EditorScopedSync/Settings.php:85
+msgid "Variation translation sync on product save"
+msgstr "סנכרון תרגום וריאציות בשמירת מוצר"
+
+#: classes/EditorScopedSync/Settings.php:86
+msgid "Choose how WPML updates variation translations when you save a variable product. Affects saves in the WooCommerce product editor only — Translation Dashboard and Translate Everything Automatically always run a complete sync."
+msgstr "בחר כיצד WPML מעדכן תרגומי וריאציות בעת שמירת מוצר משתנה. הדבר משפיע על שמירות בעורך המוצרים של WooCommerce בלבד — לוח הבקרה של התרגום ו'תרגם הכל באופן אוטומטי' תמיד מבצעים סנכרון מלא."
+
+#: classes/EditorScopedSync/Settings.php:91
+msgid "Choose how WPML updates variation translations when you save a variable product."
+msgstr "בחר כיצד WPML מעדכן תרגומי וריאציות כאשר אתה שומר מוצר משתנה."
+
+#: classes/EditorScopedSync/Settings.php:94
+msgid "Affects saves in the WooCommerce product editor only. Translation Dashboard and Translate Everything Automatically always run a complete sync."
+msgstr "הדבר משפיע על שמירות בעורך המוצרים של WooCommerce בלבד. לוח הבקרה של התרגום ו'תרגם הכל באופן אוטומטי' תמיד מבצעים סנכרון מלא."
+
+#: classes/EditorScopedSync/Settings.php:103
+msgid "Always check all variations"
+msgstr "תמיד בדוק את כל הווריאציות"
+
+#: classes/EditorScopedSync/Settings.php:105
+msgid "On every save, WPML checks every variation in every language and syncs anything that's out of date."
+msgstr "בכל שמירה, WPML בודק כל וריאציה בכל שפה ומסנכרן כל דבר שאינו עדכני."
+
+#: classes/EditorScopedSync/Settings.php:115
+msgid "Only sync variations edited in the editor"
+msgstr "סנכרן רק וריאציות שנערכו בעורך"
+
+#: classes/EditorScopedSync/Settings.php:117
+msgid "WPML syncs only the variations changed in this save. After each save, WPML shows what was synced and offers a one-click full sync."
+msgstr "WPML מסנכרן רק את הווריאציות ששונו בשמירה זו. לאחר כל שמירה, WPML מציג מה סונכרן ומציע סנכרון מלא בלחיצה אחת."
 
 #. translators: %1$s and %2$s are opening and closing HTML link tags
 #: classes/Email/Settings/TranslationControls.php:119
@@ -167,7 +289,7 @@ msgid "Cannot get exchange rates. Connection failed."
 msgstr "לא ניתן לקבל שערי חליפין. החיבור נכשל."
 
 #. translators: 1: Currency, 2: Cart total.
-#: classes/multi-currency/payment-gateways/class-wcml-currencies-payment-gateways.php:175
+#: classes/multi-currency/payment-gateways/class-wcml-currencies-payment-gateways.php:177
 msgid "Please note that the payment will be made in %1$s. Your total will be approximately %2$s, depending on the current exchange rate."
 msgstr "שים לב שהתשלום יתבצע בעוד %1$s. הסכום הכולל שלך יהיה כ-%2$s, בהתאם לשער החליפין הנוכחי."
 
@@ -268,13 +390,13 @@ msgid "Set shipping costs in other currencies manually"
 msgstr "הגדר עלויות משלוח במטבעות אחרים באופן ידני"
 
 #. translators: %s is the currency code
-#: classes/Multicurrency/Shipping/FreeShipping.php:15
+#: classes/Multicurrency/Shipping/FreeShipping.php:18
 msgctxt "The label for the field with minimal order amount in additional currency. The currency symbol will be added in place of %s specifier."
 msgid "Minimal order amount in %s"
 msgstr "סכום הזמנה מינימלי ב-%s"
 
 #. translators: %s is the currency code
-#: classes/Multicurrency/Shipping/FreeShipping.php:26
+#: classes/Multicurrency/Shipping/FreeShipping.php:32
 msgctxt "The description for the field with minimal order amount in additional currency. The currency symbol will be added in place of %s specifier."
 msgid "The minimal order amount if customer choose %s as a purchase currency."
 msgstr "סכום ההזמנה המינימלי אם הלקוח בוחר %s כמטבע רכישה."
@@ -300,13 +422,13 @@ msgid "No shipping class cost in %s"
 msgstr "אין עלות מחלקת משלוח ב-%s"
 
 #. translators: %s is a currency code
-#: classes/Multicurrency/Shipping/VariableCost.php:17
+#: classes/Multicurrency/Shipping/VariableCost.php:15
 msgctxt "The label for the field with shipping cost in additional currency. The currency symbol will be added in place of %s specifier."
 msgid "Cost in %s"
 msgstr "עלות ב-%s"
 
 #. translators: %s is a currency code
-#: classes/Multicurrency/Shipping/VariableCost.php:31
+#: classes/Multicurrency/Shipping/VariableCost.php:27
 msgctxt "The description for the field with shipping cost in additional currency. The currency symbol will be added in place of %s specifier."
 msgid "The shipping cost if customer choose %s as a purchase currency."
 msgstr "עלות המשלוח אם הלקוח בחר %s במטבע רכישה."
@@ -805,7 +927,7 @@ msgid "Tour Data"
 msgstr "נתוני סיור"
 
 #: compatibility/AdventureTours/class-wcml-adventure-tours.php:123
-#: compatibility/WcBookings/class-wcml-bookings.php:624
+#: compatibility/WcBookings/class-wcml-bookings.php:626
 #: compatibility/WcTabManager/class-wcml-tab-manager.php:326
 #: compatibility/WcTabManager/class-wcml-tab-manager.php:333
 #: inc/translation-editor/class-wcml-editor-ui-product-job.php:155
@@ -817,12 +939,12 @@ msgid "Content"
 msgstr "תוכן"
 
 #. translators: %1$s and %2$s are opening and closing HTML link tags
-#: compatibility/TableRateShipping/class-wcml-table-rate-shipping.php:178
+#: compatibility/TableRateShipping/class-wcml-table-rate-shipping.php:176
 msgid "To translate the Method Title, go to the %1$sTranslation Dashboard%2$s."
 msgstr "כדי לתרגם את כותרת השיטה, עבור אל %1$sלוח המחוונים של התרגום%2$s."
 
 #. translators: %1$s and %2$s are opening and closing HTML link tags
-#: compatibility/TableRateShipping/class-wcml-table-rate-shipping.php:191
+#: compatibility/TableRateShipping/class-wcml-table-rate-shipping.php:189
 msgid "To translate Labels, go to the %1$sTranslation Dashboard%2$s."
 msgstr "כדי לתרגם תוויות, עבור אל %1$sלוח המחוונים של התרגום%2$s."
 
@@ -841,50 +963,50 @@ msgstr "חישוב עלויות במטבעות אחרים באופן אוטומ�
 msgid "Set costs in other currencies manually"
 msgstr "הגדר עלויות במטבעות אחרים באופן ידני"
 
-#: compatibility/WcBookings/class-wcml-bookings.php:601
+#: compatibility/WcBookings/class-wcml-bookings.php:603
 msgid "Bookings"
 msgstr "הזמנות"
 
-#: compatibility/WcBookings/class-wcml-bookings.php:605
+#: compatibility/WcBookings/class-wcml-bookings.php:607
 msgid "Resources Label"
 msgstr "תווית משאבים"
 
-#: compatibility/WcBookings/class-wcml-bookings.php:613
-#: compatibility/WcBookings/class-wcml-bookings.php:614
+#: compatibility/WcBookings/class-wcml-bookings.php:615
+#: compatibility/WcBookings/class-wcml-bookings.php:616
 msgid "Resources"
 msgstr "משאבים"
 
-#: compatibility/WcBookings/class-wcml-bookings.php:634
+#: compatibility/WcBookings/class-wcml-bookings.php:636
 msgid "Person Types"
 msgstr "סוגי אנשים"
 
-#: compatibility/WcBookings/class-wcml-bookings.php:642
+#: compatibility/WcBookings/class-wcml-bookings.php:644
 msgid "Person Type Name"
 msgstr "שם סוג אדם"
 
-#: compatibility/WcBookings/class-wcml-bookings.php:644
+#: compatibility/WcBookings/class-wcml-bookings.php:646
 #: compatibility/WcCompositeProducts/class-wcml-composite-products.php:185
 #: compatibility/WcCompositeProducts/class-wcml-composite-products.php:209
 #: compatibility/WcProductAddons/class-wcml-product-addons.php:279
-#: compatibility/WcProductBundles/class-wcml-product-bundles.php:390
+#: compatibility/WcProductBundles/class-wcml-product-bundles.php:388
 msgid "Description"
 msgstr "תיאור"
 
-#: compatibility/WcBookings/class-wcml-bookings.php:736
+#: compatibility/WcBookings/class-wcml-bookings.php:738
 msgid "Resources label"
 msgstr "תווית משאבים"
 
 #. translators: %1$s and %2$s are opening and closing HTML link tags
-#: compatibility/WcBookings/class-wcml-bookings.php:1353
+#: compatibility/WcBookings/class-wcml-bookings.php:1355
 msgid "To translate Resources, go to the %1$sTranslation Dashboard%2$s and send the associated product for translation."
 msgstr "כדי לתרגם משאבים, עבור אל %1$sלוח המחוונים של התרגום%2$s ושלח את המוצר המשויך לתרגום."
 
 #. translators: %1$s and %2$s are opening and closing HTML link tags
-#: compatibility/WcBookings/class-wcml-bookings.php:1366
+#: compatibility/WcBookings/class-wcml-bookings.php:1368
 msgid "To translate Person Types, go to the %1$sTranslation Dashboard%2$s and send the associated product for translation."
 msgstr "כדי לתרגם סוגי אנשים, עבור אל %1$sלוח המחוונים של התרגום%2$s ושלח את המוצר המשויך לתרגום."
 
-#: compatibility/WcBookings/MulticurrencyHooks.php:693
+#: compatibility/WcBookings/MulticurrencyHooks.php:689
 msgid "Booking currency"
 msgstr "מטבע ההזמנה"
 
@@ -895,7 +1017,7 @@ msgstr "מוצרים מרוכבים (רכיבים)"
 #: compatibility/WcCompositeProducts/class-wcml-composite-products.php:183
 #: compatibility/WcCompositeProducts/class-wcml-composite-products.php:207
 #: compatibility/WcProductAddons/class-wcml-product-addons.php:277
-#: compatibility/WcProductBundles/class-wcml-product-bundles.php:379
+#: compatibility/WcProductBundles/class-wcml-product-bundles.php:377
 #: inc/translation-editor/class-wcml-editor-ui-product-job.php:195
 #: inc/translation-editor/class-wcml-editor-ui-product-job.php:283
 msgid "Name"
@@ -952,7 +1074,7 @@ msgstr "הגדר באופן ידני את המחירים במטבעות האחר
 msgid "Here you can set different prices for the %s in multiple currencies:"
 msgstr "כאן תוכל להגדיר מחירים שונים עבור ה-%s במטבעות שונים:"
 
-#: compatibility/WcProductBundles/class-wcml-product-bundles.php:355
+#: compatibility/WcProductBundles/class-wcml-product-bundles.php:353
 msgid "Product Bundles"
 msgstr "הגן על חבילות"
 
@@ -978,7 +1100,7 @@ msgid "Heading"
 msgstr "כותרת"
 
 #. translators: %1$s and %2$s are opening and closing HTML link tags
-#: compatibility/WcTabManager/class-wcml-tab-manager.php:709
+#: compatibility/WcTabManager/class-wcml-tab-manager.php:705
 #: compatibility/YikesCustomProductTabs/class-wcml-yikes-custom-product-tabs.php:236
 msgid "To translate custom per-product tabs, go to the %1$sTranslation Dashboard%2$s and send the associated product for translation."
 msgstr "כדי לתרגם כרטיסיות מותאמות אישית למוצר ספציפי, עבור אל %1$sלוח המחוונים של התרגום%2$s ושלח את המוצר המשויך לתרגום."
@@ -1004,25 +1126,20 @@ msgstr "- כדי לערוך את תרגום המוצר הזה, השתמש ב%1$s
 msgid "- To edit the original product, switch back to the default language."
 msgstr "- כדי לערוך את המוצר המקורי, חזור לשפת ברירת המחדל."
 
-#: inc/admin-menus/class-wcml-admin-menus.php:275
+#: inc/admin-menus/class-wcml-admin-menus.php:276
 msgid "Multilingual Settings"
 msgstr "הגדרות רב לשוניות"
 
-#: inc/admin-menus/class-wcml-admin-menus.php:279
+#: inc/admin-menus/class-wcml-admin-menus.php:280
 msgid "Multicurrency Settings"
 msgstr "הגדרות ריבוי מטבעות"
 
 #. translators: 1: open <a> tag, 2: close <a> tag
-#: inc/admin-menus/class-wcml-admin-menus.php:295
+#: inc/admin-menus/class-wcml-admin-menus.php:296
 msgid "It’s recommended that you translate products from the %1$sTranslation Dashboard%2$s."
 msgstr "מומלץ לתרגם מוצרים מ-%1$sלוח המחוונים של התרגום%2$s."
 
-#: inc/admin-menus/class-wcml-admin-menus.php:299
-#: inc/class-wcml-cart-sync-warnings.php:90
-msgid "Dismiss"
-msgstr "בטל"
-
-#: inc/admin-menus/class-wcml-admin-menus.php:368
+#: inc/admin-menus/class-wcml-admin-menus.php:369
 msgid "WCML"
 msgstr "WCML"
 
@@ -1034,22 +1151,22 @@ msgstr "מציגה רשימה של המוצרים שהיו בעגלת הקניו
 msgid "Products before cart reset"
 msgstr "מוצרים לפני איפוס עגלת קניות"
 
-#: inc/class-wcml-cart-switch-lang-functions.php:78
+#: inc/class-wcml-cart-switch-lang-functions.php:79
 msgid "Switching language?"
 msgstr "מחליף שפה?"
 
 #. translators: %s is a language name
-#: inc/class-wcml-cart-switch-lang-functions.php:82
+#: inc/class-wcml-cart-switch-lang-functions.php:83
 msgid "You've switched the language and there are items in the cart. If you keep the %s language, the cart will be emptied and you will have to add the items again to the cart."
 msgstr "החלפת את השפה ויש פריטים בעגלה. אם תשמור את השפה %s, העגלה תתרוקן ויהיה עליך להוסיף את הפריטים שוב."
 
 #. translators: %s is a language name
-#: inc/class-wcml-cart-switch-lang-functions.php:89
+#: inc/class-wcml-cart-switch-lang-functions.php:90
 msgid "Keep %s"
 msgstr "שמור את %s"
 
 #. translators: %s is a language name
-#: inc/class-wcml-cart-switch-lang-functions.php:91
+#: inc/class-wcml-cart-switch-lang-functions.php:92
 msgid "Switch back to %s"
 msgstr "החלף חזרה ל-%s"
 
@@ -1072,34 +1189,34 @@ msgstr "הגדר את WPML Multilingual & Multicurrency for WooCommerce"
 msgid "More details"
 msgstr "עוד פרטים"
 
-#: inc/class-wcml-cart.php:206
+#: inc/class-wcml-cart.php:207
 msgid "Switching currency?"
 msgstr "מחליף מטבע?"
 
-#: inc/class-wcml-cart.php:207
+#: inc/class-wcml-cart.php:208
 msgid "Your cart is not empty! After you switched the currency, all items from the cart will be removed and you have to add them again."
 msgstr "עגלת הקניות שלך אינה ריקה! לאחר שתחליף את המטבע, כל הפריטים יוסרו מעגלת הקניות ויהיה עליך להוסיפם שוב."
 
 #. translators: %s is a currency
-#: inc/class-wcml-cart.php:209
+#: inc/class-wcml-cart.php:210
 msgid "Keep using %s"
 msgstr "המשך להשתמש ב-%s"
 
-#: inc/class-wcml-cart.php:210
+#: inc/class-wcml-cart.php:211
 msgid "Proceed"
 msgstr "המשך"
 
 #. translators: %s is the number of reviews
-#: inc/class-wcml-comments.php:284
+#: inc/class-wcml-comments.php:310
 msgid "Show reviews in all languages  (%s)"
 msgstr "הצג ביקורות בכל השפות (%s)"
 
 #. translators: %1$s is a language name and %2$s is the number of reviews
-#: inc/class-wcml-comments.php:300
+#: inc/class-wcml-comments.php:326
 msgid "Show only reviews in %1$s (%2$s)"
 msgstr "הצג רק ביקורות ב-%1$s (%2$s)"
 
-#: inc/class-wcml-comments.php:348
+#: inc/class-wcml-comments.php:374
 msgid "translated"
 msgstr "מתורגם"
 
@@ -1224,25 +1341,25 @@ msgstr "מוריד תרגומים... אל תסגור דף זה."
 msgid "All the products will be removed from the current order in order to change the language"
 msgstr "כל המוצרים יוסרו מההזמנה הנוכחית כדי לשנות את השפה"
 
-#: inc/class-wcml-products.php:200
+#: inc/class-wcml-products.php:201
 #: inc/template-classes/store-urls/class-wcml-store-urls-translation-statuses-ui.php:57
 msgid "Original language"
 msgstr "שפה מקורית"
 
-#: inc/class-wcml-products.php:239
+#: inc/class-wcml-products.php:241
 msgid "Translation in progress"
 msgstr "התרגום מתבצע"
 
-#: inc/class-wcml-products.php:255
+#: inc/class-wcml-products.php:257
 msgid "Take this and edit"
 msgstr "קח זאת וערוך"
 
 #. translators: %s is the post title
-#: inc/class-wcml-products.php:318
+#: inc/class-wcml-products.php:320
 msgid "Quick edit \"%s\" inline"
 msgstr "עריכה מהירה \"%s\" בשורה"
 
-#: inc/class-wcml-products.php:322
+#: inc/class-wcml-products.php:324
 msgid "Quick Edit"
 msgstr "עריכה מהירה"
 
@@ -1263,13 +1380,13 @@ msgstr "לפחות אחד השדות האלה הכרחי: כותרת, תוכן �
 msgid "This translation job will no longer be assigned to you. Other translators will be able take it and continue the translation."
 msgstr "משימת התרגום כבר לא תהייה מוקצית לך. מתרגמים אחרים יוכלו לקחת אותה ולהמשיך בתרגום."
 
-#: inc/class-wcml-resources.php:290
-#: inc/class-wcml-resources.php:291
+#: inc/class-wcml-resources.php:287
+#: inc/class-wcml-resources.php:288
 msgid "This field is locked for editing because WPML will copy its value from the original language."
 msgstr "שדה זה נעול לעריכה מפני ש-WPML יעתיק את ערכו מהשפה המקורית."
 
 #. translators: %1$s is the post title inside a HTML link pointing to the post edit screen, %2$s and %3$s are opening and closing HTML link tags
-#: inc/class-wcml-resources.php:307
+#: inc/class-wcml-resources.php:304
 msgid "This is a translation of %1$s. Some of the fields are not editable. It's recommended that you translate products from the %2$sTranslation Dashboard%3$s."
 msgstr "זהו תרגום של %1$s. חלק מהשדות אינם ניתנים לעריכה. מומלץ לתרגם מוצרים מ-%2$sלוח המחוונים של התרגום%3$s."
 
@@ -1729,7 +1846,7 @@ msgstr "אנא בצע גיבוי של מסד הנתונים שלך לפני הש
 #. translators: The placeholder is the number of products.
 #: inc/template-classes/class-wcml-troubleshooting-ui.php:39
 msgid "There are <strong>%s product(s)</strong> in total."
-msgstr "יש סך הכל <strong>%s מוצר(ים)</strong>."
+msgstr "יש בסך הכל <strong>%s מוצרים</strong>."
 
 #. translators: The placeholder is the number of products.
 #: inc/template-classes/class-wcml-troubleshooting-ui.php:41

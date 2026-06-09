@@ -6,10 +6,10 @@
  * Author: OnTheGoSystems
  * Author URI: http://www.onthegosystems.com/
  * Text Domain: woocommerce-multilingual
- * Version: 5.5.5
+ * Version: 5.5.6
  * Plugin Slug: woocommerce-multilingual
  * WC requires at least: 3.9
- * WC tested up to: 10.6
+ * WC tested up to: 10.8
  *
  * @package WCML
  * @author  OnTheGoSystems
@@ -23,7 +23,7 @@ if (
 	return;
 }
 
-define( 'WCML_VERSION', '5.5.5' );
+define( 'WCML_VERSION', '5.5.6' );
 define( 'WCML_PLUGIN_PATH', dirname( __FILE__ ) );
 define( 'WCML_PLUGIN_FOLDER', basename( WCML_PLUGIN_PATH ) );
 define( 'WCML_LOCALE_PATH', WCML_PLUGIN_PATH . '/locale' );
@@ -131,6 +131,7 @@ function wcml_loader() {
 		\WCML\Synchronization\Hooks::class,
 		\WCML\PostHog\Hooks::class,
 		\WCML\WcEmailSettings\MultilingualHooks::class,
+		\WCML\EditorScopedSync\HooksFactory::class,
 	];
 
 	$loaders[] = 'WCML_Product_Image_Filter_Factory';

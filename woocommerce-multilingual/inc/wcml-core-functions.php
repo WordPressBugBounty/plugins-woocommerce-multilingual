@@ -53,7 +53,7 @@ if ( ! function_exists( 'wcml_price_custom_fields' ) ) {
 		 *
 		 * If the returned filter is not an array, it will be replaced with the original value.
 		 *
-		 * @param array       $default_keys Default unfiltered values.
+		 * @param array|mixed $default_keys Default unfiltered values.
 		 * @param int|WP_Post $object_id    The post, product ID or object extending "WP_Post".
 		 */
 		$filtered_keys = apply_filters( 'wcml_price_custom_fields', $filtered_keys, $object_id );

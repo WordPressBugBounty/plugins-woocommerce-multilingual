@@ -67,6 +67,7 @@ class WCML_Cart_Switch_Lang_Functions implements \IWPML_Frontend_Action, \IWPML_
 			}
 
 			$cart_for_session = false;
+			/** @phpstan-ignore-next-line instanceof.alwaysTrue */
 			if ( WC()->cart instanceof WC_Cart ) {
 				$cart_for_session = WC()->cart->get_cart_for_session();
 			}

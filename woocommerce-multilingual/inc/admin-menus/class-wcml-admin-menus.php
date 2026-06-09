@@ -240,6 +240,7 @@ class WCML_Admin_Menus {
 
 	private static function is_post_action_needs_redirect(): bool {
 		return ! isset( $_GET['action'] ) ||
+			/** @phpstan-ignore-next-line isset.offset */
 			( isset( $_GET['action'] ) &&
 				! in_array (
 					$_GET['action'],

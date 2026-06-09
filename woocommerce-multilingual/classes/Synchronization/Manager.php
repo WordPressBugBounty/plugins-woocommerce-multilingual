@@ -4,11 +4,17 @@ namespace WCML\Synchronization;
 
 class Manager {
 
+	const CONTEXT_PRODUCT_EDIT_SCREEN_UPDATE = 'product_edit_screen_update';
+	const CONTEXT_PRODUCT_BULK_OR_QUICK_EDIT = 'product_bulk_or_quick_edit';
+
 	/** @var \WPML_Post_Translation */
 	private $postTranslations;
 
 	/** @var Store */
 	private $syncStore;
+
+	/** @var string|null $context */
+	private $context;
 
 	/**
 	 * @param Store $syncStore
@@ -18,6 +24,26 @@ class Manager {
 
 		global $wpml_post_translations;
 		$this->postTranslations = $wpml_post_translations;
+	}
+
+	/**
+	 * @param string|null $context
+	 *
+	 * @return void
+	 */
+	public function setContext( $context ) {
+		$this->context = $context;
+	}
+
+	/**
+	 * @param string|array $context
+	 *
+	 * @return bool
+	 */
+	private function isInContext( $context ) {
+		$context = (array) $context;
+
+		return in_array( $this->context, $context, true );
 	}
 
 	/**
@@ -165,29 +191,35 @@ class Manager {
 	 * @return string[]
 	 */
 	private function getComponentsByPostType( $postType ) {
-		switch ( $postType ) {
-			case 'product':
-				return [
-					Store::COMPONENT_ATTACHMENTS,// CONFIRMED
-					Store::COMPONENT_ATTRIBUTES,// TAX CONFIRMED | MERA CONFIRMED
-					Store::COMPONENT_DOWNLOADABLE_FILES,// CONFIRMED, CAN BE IMPROVED
-					Store::COMPONENT_LINKED,// CONFIRMED
-					Store::COMPONENT_POST,// CONFIRMED
-					Store::COMPONENT_STOCK,// CONFIRMED
-					Store::COMPONENT_TAXONOMIES,// CONFIRMED
-					Store::COMPONENT_META,// CONFIRMED
-					Store::COMPONENT_VARIATIONS,// CONFIRMED
-				];
-			case 'product_variation':
-				return [
-					Store::COMPONENT_VARIATION_ATTACHMENTS,// CONFIRMED
-					Store::COMPONENT_VARIATION_META,// CONFIRMED
-					Store::COMPONENT_DOWNLOADABLE_FILES,// CONFIRMED, CAN BE IMPROVED
-					Store::COMPONENT_VARIATION_TAXONOMIES,// CONFIRMED
-					Store::COMPONENT_STOCK,// CONFIRMED
-				];
+		$components = [];
+
+		if ( 'product' === $postType ) {
+			$components = [
+				Store::COMPONENT_ATTACHMENTS,// CONFIRMED
+				Store::COMPONENT_ATTRIBUTES,// TAX CONFIRMED | MERA CONFIRMED
+				Store::COMPONENT_DOWNLOADABLE_FILES,// CONFIRMED, CAN BE IMPROVED
+				Store::COMPONENT_LINKED,// CONFIRMED
+				Store::COMPONENT_POST,// CONFIRMED
+				Store::COMPONENT_STOCK,// CONFIRMED
+				Store::COMPONENT_TAXONOMIES,// CONFIRMED
+				Store::COMPONENT_META,// CONFIRMED
+			];
+
+			if ( ! $this->isInContext( [ self::CONTEXT_PRODUCT_EDIT_SCREEN_UPDATE, self::CONTEXT_PRODUCT_BULK_OR_QUICK_EDIT ] ) ) {
+				$components[] = Store::COMPONENT_VARIATIONS; // CONFIRMED
+			}
+
+		} elseif ( 'product_variation' === $postType ) {
+			$components = [
+				Store::COMPONENT_VARIATION_ATTACHMENTS,// CONFIRMED
+				Store::COMPONENT_VARIATION_META,// CONFIRMED
+				Store::COMPONENT_DOWNLOADABLE_FILES,// CONFIRMED, CAN BE IMPROVED
+				Store::COMPONENT_VARIATION_TAXONOMIES,// CONFIRMED
+				Store::COMPONENT_STOCK,// CONFIRMED
+			];
 		}
-		return [];
+
+		return $components;
 	}
 
 }

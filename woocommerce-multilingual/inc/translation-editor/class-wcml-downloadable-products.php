@@ -34,13 +34,13 @@ class WCML_Downloadable_Products {
 	 * @param woocommerce_wpml        $woocommerce_wpml
 	 * @param SitePress|NullSitePress $sitepress
 	 * @param wpdb                    $wpdb
-	 * @param WPML_WP_Cache           $wpml_cache
+	 * @param WPML_WP_Cache|null      $wpml_cache
 	 */
 	public function __construct(
 		woocommerce_wpml $woocommerce_wpml,
 		ISitePress $sitepress,
 		wpdb $wpdb,
-		WPML_WP_Cache $wpml_cache = null
+		?WPML_WP_Cache $wpml_cache = null
 	) {
 		$this->woocommerce_wpml = $woocommerce_wpml;
 		$this->sitepress        = $sitepress;

@@ -28,6 +28,7 @@ class WCML_Status_Media_UI extends WCML_Templates_Factory {
 				/* translators: %s is a plugin name */
 				'using_media_translation'     => sprintf( __( '%s is installed and active.', 'woocommerce-multilingual' ), '<strong>' . $media_plugin_name . '</strong>' ),
 			],
+			/** @phpstan-ignore-next-line notIdentical.alwaysTrue */
 			'media_translation_active' => null !== $this->sitepress->get_wp_api()->constant( 'WPML_MEDIA_VERSION' ),
 		];
 

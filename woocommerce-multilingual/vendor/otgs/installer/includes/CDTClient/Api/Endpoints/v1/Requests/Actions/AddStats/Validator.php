@@ -128,10 +128,8 @@ class Validator implements ValidatorInterface {
 	 */
 	private function validateSiteUuid() {
 		return array_key_exists( 'siteUUID', $this->body['data'] ) &&
-		       (
-			       is_string( $this->body['data']['siteUUID'] ) ||
-			       is_null( $this->body['data']['siteUUID'] )
-		       );
+		       is_string( $this->body['data']['siteUUID'] ) &&
+		       ! empty( $this->body['data']['siteUUID'] );
 	}
 
 

@@ -45,7 +45,6 @@ class Translatable implements IMedia {
 		if ( ! class_exists( \WPML\Media\Option::class ) ) {
 			return false;
 		}
-		/** @phpstan-ignore staticMethod.notFound  */
 		if ( Option::getTranslateMediaLibraryTexts() || Option::shouldHandleMediaAuto() ) {
 			return true;
 		}

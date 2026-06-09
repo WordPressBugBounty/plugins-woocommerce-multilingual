@@ -19,10 +19,7 @@ class CurrencySwitcherComponent implements CurrencySwitcherTemplateInterface {
 	/** @var array|null $model */
 	private $model;
 
-	/**
-	 * @var \WPML_WP_API
-	 */
-	private $wp_api;
+	private ?\WPML_WP_API $wp_api = null;
 
 	/**
 	 * @param array $templateSetup
@@ -53,7 +50,7 @@ class CurrencySwitcherComponent implements CurrencySwitcherTemplateInterface {
 	}
 
 	public function set_model( $model ) {
-		/* @phpstan-ignore ternary.elseUnreachable */
+		/* @phpstan-ignore function.alreadyNarrowedType */
 		$this->model = is_array( $model ) ? $model : [ $model ];
 	}
 

@@ -219,8 +219,7 @@ class WCML_Currency_Switcher_Ajax {
 			require_once ABSPATH . '/wp-admin/includes/widgets.php';
 		}
 		$sidebars_widgets = wp_get_sidebars_widgets();
-
-		/* @phpstan-ignore ternary.elseUnreachable */
+		/** @phpstan-ignore-next-line function.alreadyNarrowedType */
 		return is_array( $sidebars_widgets ) ? $sidebars_widgets : [];
 	}
 	public function update_sidebars_widgets( $sidebars_widgets ) {

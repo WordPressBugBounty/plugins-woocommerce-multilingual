@@ -212,11 +212,11 @@ class TranslationControls extends TranslationControlsBase {
 	 */
 	private function getGatewayTextKeys() {
 		/**
-		 * @param array Strings::TRANSLATABLE_SETTINGS
+		 * @param array $translatableSettings Strings::TRANSLATABLE_SETTINGS
 		 *
 		 * @return array
 		 */
-		return apply_filters( 'wcml_gateway_text_keys_to_translate', Strings::TRANSLATABLE_SETTINGS ); // @phpstan-ignore-line
+		return apply_filters( 'wcml_gateway_text_keys_to_translate', Strings::TRANSLATABLE_SETTINGS );
 	}
 
 	/**

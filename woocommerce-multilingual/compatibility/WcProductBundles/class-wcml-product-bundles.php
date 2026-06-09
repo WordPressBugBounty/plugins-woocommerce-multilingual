@@ -260,10 +260,10 @@ class WCML_Product_Bundles implements \IWPML_Action {
 	}
 
 	/**
-	 * @param array  $original_default_variation_attributes
-	 * @param string $target_lang
-	 * @param int    $product_id
-	 * @param int    $translated_product_id
+	 * @param array|mixed $original_default_variation_attributes
+	 * @param string      $target_lang
+	 * @param int         $product_id
+	 * @param int         $translated_product_id
 	 *
 	 * @return array
 	 */
@@ -341,15 +341,13 @@ class WCML_Product_Bundles implements \IWPML_Action {
 	 * @param object     $obj
 	 * @param string|int $bundle_id
 	 * @param mixed      $data
-	 *
-	 * @return false|void
 	 */
-	public function custom_box_html( $obj, $bundle_id, $data ) {
+	public function custom_box_html( $obj, $bundle_id, $data ): void {
 
 		$bundle_items = $this->product_bundles_items->get_items( $bundle_id );
 
 		if ( empty( $bundle_items ) ) {
-			return false;
+			return;
 		}
 
 		$bundles_section = new WPML_Editor_UI_Field_Section( __( 'Product Bundles', 'woocommerce-multilingual' ) );
@@ -571,16 +569,14 @@ class WCML_Product_Bundles implements \IWPML_Action {
 	 * @param string|int $translated_bundle_id
 	 * @param array      $data
 	 * @param string     $lang
-	 *
-	 * @return array|void
 	 */
-	public function bundle_update( $bundle_id, $translated_bundle_id, $data, $lang ) {
+	public function bundle_update( $bundle_id, $translated_bundle_id, $data, $lang ): void {
 		// $get_field_translation :: (string, string, string, string) -> string
 		$get_field_translation = function( $product_id, $item_id, $field, $field_alias ) use ( $data ) {
 			return Obj::prop( md5( 'bundle_' . $product_id . '_' . $field_alias ), $data );
 		};
 
-		return $this->apply_translation( $bundle_id, $translated_bundle_id, $get_field_translation, $lang );
+		$this->apply_translation( $bundle_id, $translated_bundle_id, $get_field_translation, $lang );
 	}
 
 	/**

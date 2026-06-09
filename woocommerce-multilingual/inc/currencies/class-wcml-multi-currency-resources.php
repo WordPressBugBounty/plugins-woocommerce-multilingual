@@ -47,6 +47,7 @@ class WCML_Multi_Currency_Resources {
 
 		$script_vars['cache_enabled'] = false;
 
+		/* @phpstan-ignore-next-line instanceof.alwaysTrue    */
 		$w3tc_enabled = isset( self::$multi_currency->W3TC ) && self::$multi_currency->W3TC instanceof WCML_W3TC_Multi_Currency;
 		$nginx_enabled = class_exists( 'NginxCache' );
 

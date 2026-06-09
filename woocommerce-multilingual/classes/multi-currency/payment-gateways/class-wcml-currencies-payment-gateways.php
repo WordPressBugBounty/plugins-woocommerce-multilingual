@@ -15,8 +15,7 @@ class WCML_Currencies_Payment_Gateways {
 	/** @var array */
 	private $available_gateways;
 
-	/** @var array */
-	private $supported_gateways;
+	private array $supported_gateways = [];
 
 	/** @var woocommerce_wpml */
 	private $woocommerce_wpml;
@@ -197,7 +196,7 @@ class WCML_Currencies_Payment_Gateways {
 	}
 
 	private function store_supported_gateways() {
-		if ( is_array( $this->supported_gateways ) ) {
+		if ( ! empty( $this->supported_gateways ) ) {
 			$client_currency = $this->woocommerce_wpml->multi_currency->get_client_currency();
 			foreach ( $this->supported_gateways as $id => $supported_gateway ) {
 				if ( $this->is_a_valid_gateway( $id, $supported_gateway ) ) {

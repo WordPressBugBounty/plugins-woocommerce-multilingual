@@ -176,6 +176,7 @@ class WCML_Products {
 					( current_user_can( 'wpml_operate_woocommerce_multilingual' ) ||
 						wpml_check_user_is_translator( $slang, $language['code'] ) ) &&
 					( ! isset( $_POST['translation_status_lang'] ) ||
+					    /** @phpstan-ignore-next-line isset.offset */
 						( isset( $_POST['translation_status_lang'] ) &&
 							( $_POST['translation_status_lang'] == $language['code'] ) ||
 							$_POST['translation_status_lang'] == '' )
@@ -204,6 +205,7 @@ class WCML_Products {
 			} elseif (
 					$slang != $language['code'] &&
 					( ! isset( $_POST['translation_status_lang'] ) ||
+					  /** @phpstan-ignore-next-line isset.offset */
 						( isset( $_POST['translation_status_lang'] ) &&
 							$_POST['translation_status_lang'] == $language['code'] ||
 							$_POST['translation_status_lang'] == ''
@@ -224,7 +226,7 @@ class WCML_Products {
 				}
 
 				if ( ! current_user_can( 'wpml_manage_woocommerce_multilingual' ) && isset( $product_translations[ $language['code'] ] ) ) {
-					/** @var stdClass */
+					/** @var stdClass|mixed */
 					$tr_status = $this->wpdb->get_row(
 						$this->wpdb->prepare(
 							"SELECT status,translator_id FROM {$this->wpdb->prefix}icl_translation_status

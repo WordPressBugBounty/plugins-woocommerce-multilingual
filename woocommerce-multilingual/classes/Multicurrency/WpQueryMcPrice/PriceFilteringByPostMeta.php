@@ -23,9 +23,9 @@ class PriceFilteringByPostMeta extends AbstractPriceByPostMeta implements \IWPML
 	}
 
 	/**
-	 * @param string $needle
-	 * @param array $haystack
-	 * @param array $matches
+	 * @param string      $needle
+	 * @param array|mixed $haystack
+	 * @param array       $matches
 	 */
 	public function searchAndRemoveMetaQueryPrice( $needle, &$haystack, &$matches ): bool {
 		if ( ! is_array( $haystack ) ) {

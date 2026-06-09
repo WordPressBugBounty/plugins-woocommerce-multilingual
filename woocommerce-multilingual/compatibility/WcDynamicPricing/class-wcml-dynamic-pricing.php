@@ -141,7 +141,6 @@ class WCML_Dynamic_Pricing implements \IWPML_Action {
 		$class_name = wpml_collect( array_keys( $requirements ) )
 			->first(
 				function ( $class_name ) use ( $dynamic_pricing ) {
-						/* @phpstan-ignore booleanOr.alwaysTrue */
 						return get_class( $dynamic_pricing ) === $class_name || is_subclass_of( $dynamic_pricing, $class_name );
 				}
 			);
@@ -179,9 +178,9 @@ class WCML_Dynamic_Pricing implements \IWPML_Action {
 	}
 
 	/**
-	 * @param array $rules
+	 * @param array|mixed $rules
 	 *
-	 * @return array
+	 * @return array|mixed
 	 */
 	public function translate_variations_in_rules( $rules ) {
 		if ( is_array( $rules ) ) {

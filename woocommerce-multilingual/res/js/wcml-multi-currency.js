@@ -31,7 +31,7 @@ function wcml_load_currency(currency, force_switch) {
 
     var switchers = document.querySelectorAll('.wcml_currency_switcher');
     switchers.forEach(function(switcher) {
-        switcher.appendChild(ajax_loader);
+        switcher.appendChild(ajax_loader.cloneNode(true));
     });
 
     var formData = new FormData();

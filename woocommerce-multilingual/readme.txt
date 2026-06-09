@@ -3,8 +3,8 @@ Contributors: AmirHelzer, strategio, dgwatkins, andrewp-2
 Tags: commerce, ecommerce, woocommerce, multilingual, multicurrency
 License: GPLv2
 Requires at least: 6.0
-Tested up to: 6.9
-Stable tag: 5.5.5
+Tested up to: 7.0
+Stable tag: 5.5.6
 Requires PHP: 7.4
 
 Make your store multilingual and enable multiple currencies.
@@ -123,9 +123,9 @@ WPML Multilingual & Multicurrency for WooCommerce is compatible with all major W
 = Minimum Requirements =
 
 * WordPress 6.0 or later
-* PHP version 7.2 or later
+* PHP version 7.4 or later
 * MySQL version 5.6 or later
-* WooCommerce 3.9.0 or later
+* WooCommerce 6.2 or later
 
 = Setup =
 

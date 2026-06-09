@@ -344,8 +344,6 @@ class MulticurrencyHooks implements \IWPML_Action {
 
 	/**
 	 * @param int $postId
-	 *
-	 * @return false|void
 	 */
 	public function save_custom_costs( $postId ) {
 		$nonce = filter_var( isset( $_POST['_wcml_custom_costs_nonce'] ) ? $_POST['_wcml_custom_costs_nonce'] : '', FILTER_SANITIZE_FULL_SPECIAL_CHARS );
@@ -358,7 +356,7 @@ class MulticurrencyHooks implements \IWPML_Action {
 
 				$currencies = $this->woocommerce_wpml->multi_currency->get_currencies();
 				if ( empty( $currencies ) || 0 === $postId ) {
-					return false;
+					return;
 				}
 
 				$this->update_booking_costs( $currencies, $postId );
@@ -381,8 +379,6 @@ class MulticurrencyHooks implements \IWPML_Action {
 				}
 
 				update_post_meta( $postId, '_price', '' );
-			} else {
-				return false;
 			}
 		}
 	}

@@ -7,8 +7,7 @@ use WPML_WP_API;
 
 class NullSitePress implements ISitePress {
 
-	/** @var WPML_WP_API */
-	private $wp_api;
+	private ?WPML_WP_API $wp_api = null;
 
 	/**
 	 * @param bool   $refresh

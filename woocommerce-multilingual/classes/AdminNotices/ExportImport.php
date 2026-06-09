@@ -117,7 +117,7 @@ class ExportImport implements \IWPML_Backend_Action, \IWPML_DIC_Action {
 
 		if (
 			defined( 'DOING_AJAX' )
-			&& DOING_AJAX
+			&& wp_doing_ajax()
 		) {
 			return false;
 		}

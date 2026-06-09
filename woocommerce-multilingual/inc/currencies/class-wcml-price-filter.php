@@ -3,7 +3,7 @@
 class WCML_Price_Filter {
 
 	/**
-	 * @var woocommerce_wpml;
+	 * @var woocommerce_wpml
 	 */
 	private $woocommerce_wpml;
 

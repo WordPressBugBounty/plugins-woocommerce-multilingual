@@ -134,7 +134,7 @@ class WCML_Cart {
 	}
 
 	public function wcml_removed_cart_items_widget( $args = [] ) {
-
+		/** @phpstan-ignore-next-line instanceof.alwaysTrue */
 		if ( $this->woocommerce->session instanceof WC_Session ) {
 			$removed_cart_items = new WCML_Removed_Cart_Items_UI( $this->woocommerce_wpml, $this->sitepress, $this->woocommerce );
 			$preview            = $removed_cart_items->get_view();
@@ -166,7 +166,7 @@ class WCML_Cart {
 				}
 				WC()->cart->remove_cart_item( $item_key );
 			}
-
+			/** @phpstan-ignore-next-line instanceof.alwaysTrue */
 			if ( $this->woocommerce->session instanceof WC_Session ) {
 				$this->woocommerce->session->set( 'wcml_removed_items', serialize( $removed_products ) );
 			}
@@ -195,6 +195,7 @@ class WCML_Cart {
 	public function cart_switching_currency( $exc, $current_currency, $new_currency, $return = false ) {
 
 		$cart_for_session = false;
+		/** @phpstan-ignore-next-line instanceof.alwaysTrue */
 		if ( WC()->cart instanceof WC_Cart ) {
 			$cart_for_session = array_filter( WC()->cart->get_cart_contents() );
 		}

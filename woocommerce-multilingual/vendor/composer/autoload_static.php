@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit39c87cef069d97f292e7fc997a075280
+class ComposerStaticInitfee99dc884f91ebb00acfd1f851109a1
 {
     public static $files = array (
         'b45b351e6b6f7487d819961fef2fda77' => __DIR__ . '/..' . '/jakeasmith/http_build_url/src/http_build_url.php',
@@ -137,6 +137,13 @@ class ComposerStaticInit39c87cef069d97f292e7fc997a075280
         'WCML\\DisplayAsTranslated\\ProductCatHooks' => __DIR__ . '/../..' . '/classes/DisplayAsTranslated/ProductCatHooks.php',
         'WCML\\DisplayAsTranslated\\ProductHooks' => __DIR__ . '/../..' . '/classes/DisplayAsTranslated/ProductHooks.php',
         'WCML\\DownloadableFiles\\SyncDownloadableFilesFromATE' => __DIR__ . '/../..' . '/classes/DownloadableFiles/SyncDownloadableFilesFromATE.php',
+        'WCML\\EditorScopedSync\\EditorChangeTracker' => __DIR__ . '/../..' . '/classes/EditorScopedSync/EditorChangeTracker.php',
+        'WCML\\EditorScopedSync\\ForceUpdateEndpoint' => __DIR__ . '/../..' . '/classes/EditorScopedSync/ForceUpdateEndpoint.php',
+        'WCML\\EditorScopedSync\\HooksFactory' => __DIR__ . '/../..' . '/classes/EditorScopedSync/HooksFactory.php',
+        'WCML\\EditorScopedSync\\Mode' => __DIR__ . '/../..' . '/classes/EditorScopedSync/Mode.php',
+        'WCML\\EditorScopedSync\\Notices' => __DIR__ . '/../..' . '/classes/EditorScopedSync/Notices.php',
+        'WCML\\EditorScopedSync\\Settings' => __DIR__ . '/../..' . '/classes/EditorScopedSync/Settings.php',
+        'WCML\\EditorScopedSync\\SyncGate' => __DIR__ . '/../..' . '/classes/EditorScopedSync/SyncGate.php',
         'WCML\\Email\\Factory' => __DIR__ . '/../..' . '/classes/Email/Factory.php',
         'WCML\\Email\\Settings\\TranslationControls' => __DIR__ . '/../..' . '/classes/Email/Settings/TranslationControls.php',
         'WCML\\Endpoints\\Factory' => __DIR__ . '/../..' . '/classes/Endpoints/Factory.php',
@@ -220,6 +227,7 @@ class ComposerStaticInit39c87cef069d97f292e7fc997a075280
         'WCML\\Permalinks\\Settings\\TranslationControls' => __DIR__ . '/../..' . '/classes/Permalinks/Settings/TranslationControls.php',
         'WCML\\Permalinks\\Strings' => __DIR__ . '/../..' . '/classes/Permalinks/Strings.php',
         'WCML\\PointerUi\\Factory' => __DIR__ . '/../..' . '/classes/PointerUi/Factory.php',
+        'WCML\\PostHog\\Event\\EditorScopedSyncSettingChanged' => __DIR__ . '/../..' . '/classes/PostHog/Event/EditorScopedSyncSettingChanged.php',
         'WCML\\PostHog\\Hooks' => __DIR__ . '/../..' . '/classes/PostHog/Hooks.php',
         'WCML\\Products\\Hooks' => __DIR__ . '/../..' . '/classes/product/Hooks.php',
         'WCML\\Reports\\Categories\\Query' => __DIR__ . '/../..' . '/classes/Reports/Categories/Query.php',
@@ -488,9 +496,9 @@ class ComposerStaticInit39c87cef069d97f292e7fc997a075280
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit39c87cef069d97f292e7fc997a075280::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit39c87cef069d97f292e7fc997a075280::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit39c87cef069d97f292e7fc997a075280::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitfee99dc884f91ebb00acfd1f851109a1::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitfee99dc884f91ebb00acfd1f851109a1::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInitfee99dc884f91ebb00acfd1f851109a1::$classMap;
 
         }, null, ClassLoader::class);
     }

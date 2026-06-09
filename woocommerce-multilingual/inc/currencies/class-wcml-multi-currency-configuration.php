@@ -344,6 +344,7 @@ class WCML_Multi_Currency_Configuration {
 				$save = true;
 			}
 
+			/** @phpstan-ignore-next-line instanceof.alwaysTrue */
 			if ( self::$multi_currency instanceof WCML_Multi_Currency ) {
 				foreach ( self::$multi_currency->get_currency_codes() as $code ) {
 					$new_key = $key . '_' . $code;
@@ -376,6 +377,7 @@ class WCML_Multi_Currency_Configuration {
 		self::verify_nonce();
 		$data = self::get_data();
 
+		/** @phpstan-ignore-next-line instanceof.alwaysTrue */
 		if ( WC()->integrations instanceof WC_Integrations) {
 			$integrations = WC()->integrations->get_integrations();
 

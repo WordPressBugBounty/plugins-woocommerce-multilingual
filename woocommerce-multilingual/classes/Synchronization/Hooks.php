@@ -143,7 +143,22 @@ class Hooks implements \IWPML_Backend_Action, \IWPML_Frontend_Action, \IWPML_DIC
 			return;
 		}
 
+		$this->manager->setContext( $this->getContext() );
 		$this->manager->run( $post );
+		$this->manager->setContext( null );
+	}
+
+	/**
+	 * @return string|null
+	 */
+	private function getContext() {
+		$isUpdatingProductFromEditScreen = isset( $_POST['action'] ) && 'editpost' === sanitize_key( wp_unslash( $_POST['action'] ) );
+
+		if ( $isUpdatingProductFromEditScreen ) {
+			return Manager::CONTEXT_PRODUCT_EDIT_SCREEN_UPDATE;
+		}
+
+		return null;
 	}
 
 	/**
@@ -317,26 +332,27 @@ class Hooks implements \IWPML_Backend_Action, \IWPML_Frontend_Action, \IWPML_DIC
 			return;
 		}
 
+		$this->manager->setContext( Manager::CONTEXT_PRODUCT_BULK_OR_QUICK_EDIT );
+
 		if ( ! $isOriginal ) {
 			$language = $this->manager->getElementLanguage( $productId );
 			$this->manager->runProductComponents( $originalProduct, [ $productId ], [ $productId => $language ] );
-			return;
-		}
+		} else {
+			$translationsLanguages = [];
+			foreach ( $translations as $index => $translation ) {
+				if ( $productId === (int) $translation ) {
+					unset( $translations[ $index ] );
+				} else {
+					$translationsLanguages[ $translation ] = $this->manager->getElementLanguage( $translation );
+				}
+			}
 
-		$translationsLanguages = [];
-		foreach ( $translations as $index => $translation ) {
-			if ( $productId === (int) $translation ) {
-				unset( $translations[ $index ] );
-			} else {
-				$translationsLanguages[ $translation ] = $this->manager->getElementLanguage( $translation );
+			if ( ! empty( $translations ) ) {
+				$this->manager->runProductComponents( $originalProduct, $translations, $translationsLanguages );
 			}
 		}
 
-		if ( empty( $translations ) ) {
-			return;
-		}
-
-		$this->manager->runProductComponents( $originalProduct, $translations, $translationsLanguages );
+		$this->manager->setContext( null );
 	}
 
 	/**

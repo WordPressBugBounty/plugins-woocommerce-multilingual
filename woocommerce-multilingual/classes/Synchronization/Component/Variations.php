@@ -42,6 +42,18 @@ class Variations extends SynchronizerForMeta {
 			return;
 		}
 
+		// Editor-scoped sync mode: narrow the iteration to the variations the editor
+		// actually saved during this request. In Complete sync mode (default) this
+		// filter passes through unchanged. See classes/EditorScopedSync/SyncGate.php.
+		$editorScopedIds = apply_filters( 'wcml_editor_scoped_variation_ids', null, $product->ID );
+		if ( is_array( $editorScopedIds ) ) {
+			if ( empty( $editorScopedIds ) ) {
+				return;
+			}
+
+			$productVariations = array_intersect_key( $productVariations, array_flip( $editorScopedIds ) );
+		}
+
 		$variationsTranslations               = [];
 		$preparedVariationsToSetAsDuplication = [];
 
@@ -111,10 +123,12 @@ class Variations extends SynchronizerForMeta {
 			);
 		}
 
-		foreach ( $translationsIds as $translationId ) {
-			$orphanedTranslationVariations = $storedVariations[ $translationId ] ?? [];
-			foreach ( $orphanedTranslationVariations as $orphanedTranslationVariationId => $orphanedTranslationVariation ) {
-				wp_delete_post( $orphanedTranslationVariationId, true );
+		if ( ! $editorScopedIds ) {
+			foreach ( $translationsIds as $translationId ) {
+				$orphanedTranslationVariations = $storedVariations[ $translationId ] ?? [];
+				foreach ( $orphanedTranslationVariations as $orphanedTranslationVariationId => $orphanedTranslationVariation ) {
+					wp_delete_post( $orphanedTranslationVariationId, true );
+				}
 			}
 		}
 

@@ -223,10 +223,10 @@ class WCML_Composite_Products extends WCML_Compatibility_Helper implements \IWPM
 	/**
 	 * @deprecated This method is used by CTE only.
 	 *
-	 * @param array      $data
-	 * @param string|int $product_id
-	 * @param object     $translation
-	 * @param string     $lang
+	 * @param array        $data
+	 * @param string|int   $product_id
+	 * @param object|mixed $translation
+	 * @param string       $lang
 	 *
 	 * @return array
 	 */
@@ -423,6 +423,7 @@ class WCML_Composite_Products extends WCML_Compatibility_Helper implements \IWPM
 							$cpt     = 'product_cat';
 						}
 
+						/** @phpstan-ignore-next-line booleanAnd.rightAlwaysTrue */
 						if ( $ids_key && $cpt ) {
 							foreach ( $meta[ $ids_key ] as $idx => $assigned_id ) {
 								$data[ $key ][ $ids_key ][ $idx ] = apply_filters( 'wpml_object_id', $assigned_id, $cpt, true, $lang );

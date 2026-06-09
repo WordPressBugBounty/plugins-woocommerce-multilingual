@@ -83,11 +83,13 @@ abstract class WCML_Templates_Factory extends WPML_Templates_Factory {
 
 			/* @phpstan-ignore assign.propertyType */
 			$this->twig = $this->get_twig_environment( $loader, $environment_args );
+		/** @phpstan-ignore-next-line function.alreadyNarrowedType */
 			if ( is_array( $this->custom_functions ) ) {
 				foreach ( $this->custom_functions as $custom_function ) {
 					$this->twig->addFunction( $custom_function );
 				}
 			}
+			/** @phpstan-ignore-next-line function.alreadyNarrowedType */
 			if ( is_array( $this->custom_filters ) ) {
 				foreach ( $this->custom_filters as $custom_filter ) {
 					$this->twig->addFilter( $custom_filter );

@@ -368,7 +368,7 @@ class WCML_Multi_Currency_Prices {
 	/**
 	 * Convert back to default currency.
 	 *
-	 * @param float        $amount
+	 * @param float|mixed  $amount
 	 * @param string|false $currency
 	 *
 	 * @return float

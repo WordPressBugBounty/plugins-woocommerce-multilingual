@@ -231,8 +231,7 @@ class OTGS_Installer_Factory {
 	 */
 	public function get_plugin_finder() {
 		if ( ! $this->plugin_finder ) {
-			$settings            = $this->get_installer()->get_settings();
-			$this->plugin_finder = new OTGS_Installer_Plugin_Finder( $this->get_plugin_factory(), $settings['repositories'] );
+			$this->plugin_finder = new OTGS_Installer_Plugin_Finder( $this->get_plugin_factory() );
 		}
 
 		return $this->plugin_finder;
@@ -244,7 +243,7 @@ class OTGS_Installer_Factory {
 	public function create_upgrade_response() {
 		if ( ! $this->upgrade_response ) {
 			$this->upgrade_response = new OTGS_Installer_Upgrade_Response(
-				$this->get_plugin_finder()->get_all(),
+				$this->get_plugin_finder(),
 				$this->get_repositories(),
 				new OTGS_Installer_Source_Factory(),
 				new OTGS_Installer_Package_Product_Finder()
@@ -276,7 +275,7 @@ class OTGS_Installer_Factory {
 			$logger,
 			$this->get_repositories(),
 			new OTGS_Installer_Subscription_Factory(),
-			new SubscriptionManagerFactory($this->installer->get_settings()),
+			new SubscriptionManagerFactory(),
 			$removeService
 		);
 	}

@@ -65,7 +65,7 @@ class MulticurrencyHooks implements \IWPML_Action {
 	 * Filter Subscription Sign-up fee cost
 	 *
 	 * @param string     $subscriptionSignUpFee
-	 * @param WC_Product $product
+	 * @param WC_Product|mixed $product
 	 *
 	 * @return string
 	 */

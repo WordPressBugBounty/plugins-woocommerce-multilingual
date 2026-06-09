@@ -372,10 +372,6 @@ class WCML_Tab_Manager implements \IWPML_Action {
 		if ( is_object( $translation ) ) {
 			$tr_prod_tabs = $this->get_product_tabs( $translation->ID );
 
-			if ( ! is_array( $tr_prod_tabs ) ) {
-				return $data; // __('Please update original product','woocommerce-multilingual');
-			}
-
 			foreach ( $tr_prod_tabs as $key => $prod_tab ) {
 				if ( in_array( $prod_tab['type'], [ 'product', 'core' ] ) ) {
 					if ( 'core' === $prod_tab['type'] ) {
@@ -611,7 +607,7 @@ class WCML_Tab_Manager implements \IWPML_Action {
 	 *
 	 * @return array
 	 */
-	public function get_product_tabs( $product_id ) {
+	public function get_product_tabs( $product_id ): array {
 
 		$override_tab_layout = get_post_meta( $product_id, '_override_tab_layout', true );
 

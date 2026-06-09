@@ -302,9 +302,9 @@ class WCML_Product_Addons implements IWPML_Action {
 	/**
 	 * @deprecated This method is used by CTE only.
 	 *
-	 * @param array  $data
-	 * @param int    $product_id
-	 * @param object $translation
+	 * @param array        $data
+	 * @param int          $product_id
+	 * @param object|mixed $translation
 	 *
 	 * @return array
 	 */

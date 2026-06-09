@@ -47,9 +47,9 @@ class MulticurrencyHooks implements \IWPML_Action {
 	}
 
 	/**
-	 * @param float       $rowBasePrice
-	 * @param \WC_Product $product
-	 * @param int         $quantity
+	 * @param float             $rowBasePrice
+	 * @param \WC_Product|mixed $product
+	 * @param int               $quantity
 	 *
 	 * @return float
 	 */

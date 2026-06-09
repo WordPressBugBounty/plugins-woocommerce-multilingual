@@ -77,22 +77,47 @@ class WCML_Comments {
 
 		add_filter( 'wpml_skip_comment_duplication', [ $this, 'skip_review_duplication' ], 10, 3 );
 
-		add_action( 'pre_get_comments', [ $this, 'maybe_invalidate_comment_cache' ] );
+		add_action( 'pre_get_comments', [ $this, 'maybe_partition_comment_cache' ] );
 	}
 
 	/**
-	 * Invalidate comment cache when comment queries are about to be executed for product reviews.
-	 *
-	 * @param WP_Comment_Query $query The comment query object.
+	 * @param WP_Comment_Query $query
 	 */
-	public function maybe_invalidate_comment_cache( $query ) {
-		if ( isset( $query->query_vars['post_id'] ) && $query->query_vars['post_id'] ) {
-			$product_id = $query->query_vars['post_id'];
-
-			if ( 'product' === get_post_type( $product_id ) ) {
-				wp_cache_flush_group( 'comment-queries' );
-			}
+	public function maybe_partition_comment_cache( $query ) {
+		if ( empty( $query->query_vars['post_id'] ) ) {
+			return;
 		}
+
+		$post_id   = (int) $query->query_vars['post_id'];
+		$post_type = Obj::path( [ 'query_vars', 'post_type' ], $query );
+
+		$is_post_type_from_id = false;
+		if ( ! $post_type && $post_id ) {
+			$post_type            = get_post_type( $post_id );
+			$is_post_type_from_id = true;
+		}
+
+		if ( 'product' !== $post_type ) {
+			return;
+		}
+
+		if (
+			/** @phpstan-ignore-next-line booleanAnd.alwaysFalse */
+			( $is_post_type_from_id && 'product' !== $post_type )
+			||
+			( 'product' !== get_post_type( $post_id ) )
+		) {
+			return;
+		}
+
+		if ( ! $this->is_reviews_in_all_languages( $post_id, $query ) ) {
+			return;
+		}
+
+		$translation_ids = $this->get_translations_ids( $post_id );
+		sort( $translation_ids );
+
+		$query->query_vars['cache_domain'] = 'wcml_product_reviews_all:' . md5( implode( ',', $translation_ids ) );
 	}
 
 	/**
@@ -133,6 +158,7 @@ class WCML_Comments {
 				continue;
 			}
 
+			/** @var array|mixed $ratings */
 			$ratings      = WC_Comments::get_rating_counts_for_product( $product );
 			$review_count = WC_Comments::get_review_count_for_product( $product );
 

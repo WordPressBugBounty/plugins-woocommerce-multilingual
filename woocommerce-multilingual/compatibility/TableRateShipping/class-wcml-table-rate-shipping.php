@@ -91,7 +91,6 @@ class WCML_Table_Rate_Shipping implements \IWPML_Action {
 			return;
 		}
 
-		/** @var callable(array):void $registerLabel */
 		$registerLabel = function( $rate ) use ( $instanceId ) {
 			do_action(
 				'wpml_register_single_string',
@@ -105,7 +104,6 @@ class WCML_Table_Rate_Shipping implements \IWPML_Action {
 			->filter( Obj::prop( 'rate_label' ) )
 			->each( $registerLabel );
 
-		/** @var callable $registerAbortReason */
 		$registerAbortReason = function( $rate ) {
 			do_action(
 				'wpml_register_single_string',

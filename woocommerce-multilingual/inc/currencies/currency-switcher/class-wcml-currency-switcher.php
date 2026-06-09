@@ -61,7 +61,7 @@ class WCML_Currency_Switcher {
 	}
 
 	/**
-	 * @param array $args
+	 * @param array|mixed $args
 	 */
 	public function do_currency_switcher( $args = [] ) {
 		if ( ! is_array( $args ) ) {
@@ -139,7 +139,7 @@ class WCML_Currency_Switcher {
 	}
 
 	/**
-	 * @param array $args
+	 * @param array|mixed $args
 	 *
 	 * @deprecated 5.5.0 Use do_currency_switcher instead. The method sharing name with the class can have unexpected outcomes, for example, on PHPUnit.
 	 */

@@ -305,6 +305,7 @@ JS;
 			$converted_meta_key = $this->get_converted_meta_key( $propertySlug );
 			if ( $this->is_value_changed( $item, $propertySlug ) ) {
 				$get_key = 'get_' . $propertySlug;
+				/** @phpstan-ignore-next-line method.notFound */
 				$item->update_meta_data( $converted_meta_key, $item->$get_key() );
 			}
 		}
@@ -522,6 +523,7 @@ JS;
 	 */
 	public function get_currency_for_new_order( $currency, $order ) {
 		if ( OrdersHelper::isOrderCreateAdminScreen() || OrdersHelper::isEditingNewOrderItems() ) {
+			/** @phpstan-ignore-next-line function.alreadyNarrowedType */
 			$orderId       = method_exists( $order, 'get_id' ) ? $order->get_id() : Obj::prop( 'id', $order );
 			$orderCurrency = OrdersHelper::getCurrency( $orderId, true );
 

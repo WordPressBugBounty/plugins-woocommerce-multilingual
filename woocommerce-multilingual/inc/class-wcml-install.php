@@ -322,11 +322,13 @@ class WCML_Install {
 			$sitepress->switch_locale( $language['code'] );
 			$translated_cat_name = __( 'Uncategorized', 'sitepress' );
 			$translated_cat_name = 'Uncategorized' === $translated_cat_name && 'en' !== $language['code'] ? 'Uncategorized @' . $language['code'] : $translated_cat_name;
+			/** @var array|false $translated_term */
 			$translated_term     = get_term_by( 'name', $translated_cat_name, 'product_cat', ARRAY_A );
 			$sitepress->switch_locale();
 
 			// check if the term already exists.
 			if ( ! $translated_term ) {
+				/** @var array|false|WP_Error $translated_term */
 				$translated_term = wp_insert_term( $translated_cat_name, 'product_cat' );
 			}
 

@@ -112,9 +112,9 @@ class WCML_Payment_Gateway_PayPal_V2 extends WCML_Payment_Gateway_PayPal {
 	/**
 	 * Sets the PayPal JS API to use the changed currency
 	 *
-	 * @param array $localize
+	 * @param array|mixed $localize
 	 *
-	 * @return array
+	 * @return array|mixed
 	 */
 	public function paypal_express_checkout_convert_to_supported_currency( $localize ) {
 		if ( ! is_array( $localize ) ) {
@@ -234,9 +234,9 @@ class WCML_Payment_Gateway_PayPal_V2 extends WCML_Payment_Gateway_PayPal {
 	/**
 	 * Converts the data that will be compared with the one returned from PayPal to use the changed currency - on this basis, our order will know whether PayPal confirmed its payment
 	 *
-	 * @param array $patches_array
+	 * @param array|mixed $patches_array
 	 *
-	 * @return array
+	 * @return array|mixed
 	 */
 	public function paypal_order_patches_convert_to_supported_currency( $patches_array ) {
 		if ( ! is_array( $patches_array ) ) {

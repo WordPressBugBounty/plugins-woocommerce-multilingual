@@ -228,6 +228,7 @@ class WCML_TP_Support {
 
 			$allowed_variations_types = apply_filters( 'wcml_xliff_allowed_variations_types', [ 'variable' ] );
 
+			/** @phpstan-ignore-next-line instanceof.alwaysTrue */
 			if ( $product instanceof WC_Product && in_array( $product->get_type(), $allowed_variations_types, true ) ) {
 
 				$variations = $this->woocommerce_wpml->sync_variations_data->get_product_variations( $post->ID );
@@ -271,6 +272,7 @@ class WCML_TP_Support {
 
 			$allowed_variations_types = apply_filters( 'wcml_xliff_allowed_variations_types', [ 'variable' ] );
 
+			/** @phpstan-ignore-next-line instanceof.alwaysTrue */
 			if ( $product instanceof WC_Product && in_array( $product->get_type(), $allowed_variations_types, true ) ) {
 
 				$variations = $this->woocommerce_wpml->sync_variations_data->get_product_variations( $post->ID );
@@ -326,6 +328,7 @@ class WCML_TP_Support {
 
 			$allowed_types = [ 'simple' ];
 
+			/** @phpstan-ignore-next-line instanceof.alwaysTrue */
 			if ( $product instanceof WC_Product && in_array( $product->get_type(), $allowed_types, true ) ) {
 
 				$meta_value = get_post_meta( $post->ID, WCML_Downloadable_Products::DOWNLOADABLE_FILES_META, true );
@@ -399,7 +402,7 @@ class WCML_TP_Support {
 
 			$product_images = $this->woocommerce_wpml->media->product_images_ids( $post->ID );
 			foreach ( $product_images as $image_id ) {
-				/** @var stdClass */
+				/** @var stdClass|mixed */
 				$attachment_data = $this->wpdb->get_row( $this->wpdb->prepare( "SELECT post_title,post_excerpt,post_content FROM {$this->wpdb->posts} WHERE ID = %d", $image_id ) );
 				if ( ! is_object( $attachment_data ) ) {
 					continue;
@@ -494,7 +497,7 @@ class WCML_TP_Support {
 	 * @param int                                        $post_id
 	 * @param array                                      $data
 	 * @param bool|stdClass|WPML_Element_Translation_Job $job
-	 * @return void|null
+	 * @return void
 	 */
 	public function flush_variable_product_cache_prefix( $post_id, $data, $job ) {
 		if ( Hooks::isProduct( $job ) ) {

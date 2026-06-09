@@ -59,8 +59,7 @@ class woocommerce_wpml {
 	 * @var WCML_Currencies
 	 */
 	public $currencies;
-	/** @var WCML_Multi_Currency */
-	public $multi_currency;
+	public ?WCML_Multi_Currency $multi_currency = null;
 	/** @var WCML_Languages_Upgrader */
 	public $languages_upgrader;
 	/**
@@ -97,9 +96,8 @@ class woocommerce_wpml {
 	public $shipping;
 	/**
 	 * @deprecated will be rebuilt in WCML 5.6
-	 * @var  WCML_WC_Gateways
 	 */
-	public $gateways;
+	public ?WCML_WC_Gateways $gateways = null;
 	/** @var  WCML_Currency_Switcher_Templates */
 	public $cs_templates;
 	/**
@@ -166,6 +164,7 @@ class woocommerce_wpml {
 	private function load_rest_api() {
 		$sitepress = getSitePress();
 
+		/** @phpstan-ignore-next-line instanceof.alwaysTrue */
 		if ( class_exists( 'WooCommerce' ) && defined( 'WC_VERSION' ) && ( $sitepress instanceof \WPML\Core\ISitePress ) && WCML\Rest\Functions::isRestApiRequest() ) {
 			WCML\Rest\Hooks::addHooks();
 		}
@@ -180,10 +179,7 @@ class woocommerce_wpml {
 		do_action( 'wcml_loaded' );
 	}
 
-	/**
-	 * @return bool|void
-	 */
-	public function init() {
+	public function init(): void {
 		global $wpdb, $woocommerce, $wpml_url_converter, $wpml_post_translations, $wpml_term_translations;
 
 		$sitepress = getSitePress();
@@ -240,9 +236,11 @@ class woocommerce_wpml {
 		$this->compatibility->init();
 
 		if ( isStandAlone() ) {
-			return $this->init_standalone( $sitepress, $wpdb );
+			$this->init_standalone( $sitepress, $wpdb );
+			return;
 		} else {
-			return $this->init_full( $sitepress, $wpdb, $woocommerce, $wpml_url_converter, $wpml_post_translations, $wpml_term_translations );
+			$this->init_full( $sitepress, $wpdb, $woocommerce, $wpml_url_converter, $wpml_post_translations, $wpml_term_translations );
+			return;
 		}
 	}
 

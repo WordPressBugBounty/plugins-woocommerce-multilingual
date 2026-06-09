@@ -633,7 +633,7 @@ class WCML_Terms {
 							/**
 							 * Not using get_term.
 							 *
-							 * @var stdClass
+							 * @var stdClass|mixed
 							 */
 							$translated_term = $this->wpdb->get_row(
 								$this->wpdb->prepare(

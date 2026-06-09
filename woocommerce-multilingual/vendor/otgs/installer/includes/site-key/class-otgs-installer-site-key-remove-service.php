@@ -23,6 +23,9 @@ class  OTGS_Installer_Site_Key_Remove_Service {
 
 
 	public function remove( string $repository = 'wpml', bool $notifyExternalApi = true ) {
+		if ( $notifyExternalApi ) {
+			do_action( 'otgs_installer_before_site_key_removal', $repository );
+		}
 		$repository = $this->repositories->get( $repository );
 
 		if ( $notifyExternalApi ) {
@@ -54,7 +57,7 @@ class  OTGS_Installer_Site_Key_Remove_Service {
 		}
 	}
 
-	private function cron_retry_handler( $repository, $site_key ) {
+	public function cron_retry_handler( $repository, $site_key ) {
 		// Build params again with a new timestamp value.
 		// Because the request to API will be expired in 60 seconds.
 		list( $url, $params ) = $this->removeApi->build_params( $repository, $site_key );
