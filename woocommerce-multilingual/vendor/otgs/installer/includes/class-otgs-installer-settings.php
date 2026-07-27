@@ -23,7 +23,7 @@ class Settings {
 
 		$settings = \get_option( 'wp_installer_settings' );
 
-		if ( is_array( $settings ) || empty( $settings ) ) { //backward compatibility 1.1
+		if ( is_array( $settings ) || empty( $settings ) ) {
 			return $settings;
 		}
 
@@ -87,7 +87,7 @@ class Settings {
 	public static function requires_update() {
 		$last_update = \get_option( 'wp_installer_last_update', false );
 
-		if ( ! $last_update || ( time() - $last_update ) > 86400 ) { // 24 hours
+		if ( ! $last_update || ( time() - $last_update ) > 86400 ) {
 			\update_option( 'wp_installer_last_update', time(), false );
 			return true;
 		}
@@ -153,7 +153,6 @@ class Settings {
 				if ( isset( $download['changelog'] ) && ! empty( $download['changelog'] ) ) {
 					$changelog[ $slug ] = $download['changelog'];
 
-					// Don't remove the changelog key for backward compatibility.
 					$settings['repositories'][ $repository_id ]['data']['downloads']['plugins'][ $slug ]['changelog'] = '';
 				}
 			}
@@ -202,7 +201,6 @@ class Settings {
 
 		require_once ABSPATH . 'wp-admin/includes/file.php';
 
-		// Initialize filesystem — in admin it may prompt for creds if needed.
 		$creds_ok = WP_Filesystem();
 		if ( ! $creds_ok ) {
 			return '';

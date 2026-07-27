@@ -8,19 +8,10 @@ use WPML\FP\Lst;
 use WPML\FP\Obj;
 
 class TranslationsRepository {
-	/**
-	 * It contains merged data from 3 tables: icl_translations, icl_translation_status and the latest record from icl_translate_job
-	 *
-	 * @var array
-	 */
 	private static $data = [];
 
-	/**
-	 * @var array
-	 */
 	private static $tridLanguageIndex = [];
 
-	/** @var array */
 	private static $translationIdIndex = [];
 
 	public static function preloadForPosts( $posts ) {
@@ -100,10 +91,9 @@ class TranslationsRepository {
 	}
 
 	private static function appendResult( $sql ) {
-		/** @var \wpdb */
 		global $wpdb;
 
-		$results = $wpdb->get_results( $wpdb->prepare( $sql . ' AND 1 = %d', 1 ) ); // this is needed to utilize WPDBMock::prepare mock
+		$results = $wpdb->get_results( $wpdb->prepare( $sql . ' AND 1 = %d', 1 ) );
 		$results = is_array( $results ) ? $results : [];
 
 		self::attachLatestJobsForRids( $results );
@@ -170,7 +160,6 @@ class TranslationsRepository {
 	}
 
 	private static function getLatestJobsByRid( array $rids ) {
-		/** @var \wpdb */
 		global $wpdb;
 
 		if ( ! $rids ) {

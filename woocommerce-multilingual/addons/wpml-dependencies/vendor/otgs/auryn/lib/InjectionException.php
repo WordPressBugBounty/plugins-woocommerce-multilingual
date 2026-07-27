@@ -14,9 +14,6 @@ class InjectionException extends InjectorException
         parent::__construct($message, $code, $previous);
     }
 
-    /**
-     * Add a human readable version of the invalid callable to the standard 'invalid invokable' message.
-     */
     public static function fromInvalidCallable(
         array $inProgressMakes,
         $callableOrMethodStr,
@@ -41,7 +38,6 @@ class InjectionException extends InjectorException
         }
 
         if ($callableString) {
-            // Prevent accidental usage of long strings from filling logs. 
             $callableString = substr($callableString, 0, 250);
             $message = sprintf(
                 "%s. Invalid callable was '%s'",
@@ -55,11 +51,6 @@ class InjectionException extends InjectorException
         return new self($inProgressMakes, $message, Injector::E_INVOKABLE, $previous);
     }
 
-    /**
-     * Returns the hierarchy of dependencies that were being created when
-     * the exception occurred.
-     * @return array
-     */
     public function getDependencyChain()
     {
         return $this->dependencyChain;

@@ -6,32 +6,14 @@ use OTGS_Installer_Subscription;
 use WP_Installer;
 
 class RecommendationsManager {
-	/**
-	 * @var \OTGS_Installer_Repositories
-	 */
 	private $repositories;
 
-	/**
-	 * @var array
-	 */
 	private $settings;
 
-	/**
-	 * @var array
-	 */
 	private $repositoriesForRecommendation = [ 'wpml' ];
 
-	/**
-	 * @var Storage
-	 */
 	private $noticesStorage;
 
-	/**
-	 * RecommendationsManager constructor.
-	 *
-	 * @param \OTGS_Installer_Repositories $repositories
-	 * @param Storage $settings
-	 */
 	public function __construct( \OTGS_Installer_Repositories $repositories, Storage $noticesStorage ) {
 		$this->repositories   = $repositories;
 		$this->noticesStorage = $noticesStorage;
@@ -55,7 +37,6 @@ class RecommendationsManager {
 
 
 	public function checkAllInstalledPluginsForRecommendations( $screen = null ) {
-		// Only run on plugins page
 		if ( ! $screen || $screen->id !== 'plugins' ) {
 			return;
 		}
@@ -103,11 +84,6 @@ class RecommendationsManager {
 
 	}
 
-	/**
-	 * @param string $activatedPluginSlug
-	 *
-	 * @return array|null
-	 */
 	private function getActivatedPluginGlue( $activatedPluginSlug ) {
 		$language = $this->getCurrentLanguage();
 
@@ -152,9 +128,6 @@ class RecommendationsManager {
 			: $default;
 	}
 
-	/**
-	 * @return array
-	 */
 	public function getRepositoryPluginsRecommendations() {
 		$pluginsRecommendations = [];
 		$pluginsData            = [];
@@ -235,16 +208,6 @@ class RecommendationsManager {
 		return [ 'sections' => $pluginsRecommendations, 'plugins' => $pluginsData ];
 	}
 
-	/**
-	 * @param string $repositoryId
-	 * @param OTGS_Installer_Subscription $subscription
-	 * @param array $downloads
-	 * @param array $installedPlugins
-	 * @param array $pluginsRecommendations
-	 * @param array $pluginsData
-	 *
-	 * @return RecommendationsForInstallerPlugins
-	 */
 	private function prepareRecommendationsForInstalledPlugins( $repositoryId, OTGS_Installer_Subscription $subscription, $downloads, $installedPlugins, $pluginsRecommendations, $pluginsData ) {
 		$language = $this->getCurrentLanguage();
 
@@ -303,11 +266,6 @@ class RecommendationsManager {
 		return $sitepress ? $sitepress->get_admin_language() : 'en';
 	}
 
-	/**
-	 * @param \OTGS_Installer_Repository $repository
-	 *
-	 * @return array
-	 */
 	private function getAvailablePluginsForSubscription( \OTGS_Installer_Repository $repository ) {
 		$product = $repository->get_product_by_subscription_type();
 		if ( ! $product ) {
@@ -317,9 +275,6 @@ class RecommendationsManager {
 		return $product->get_plugins();
 	}
 
-	/**
-	 * @return array
-	 */
 	private function getInstalledPlugins() {
 		$installed_plugins = [];
 
@@ -332,17 +287,6 @@ class RecommendationsManager {
 		return $installed_plugins;
 	}
 
-	/**
-	 * @param string $language
-	 * @param array $pluginData
-	 * @param string $siteKey
-	 * @param string $repositoryId
-	 * @param string $siteUrl
-	 * @param bool $isInstalled
-	 * @param bool $isActive
-	 *
-	 * @return array
-	 */
 	private function preparePluginData( $language, $pluginData, $siteKey, $repositoryId, $siteUrl, $isInstalled, $isActive ) {
 		$url = $this->appendSiteKeyToDownloadUrl( $pluginData['url'], $siteKey, $siteUrl );
 
@@ -375,11 +319,6 @@ class RecommendationsManager {
 		];
 	}
 
-	/**
-	 * @param array $pluginData
-	 *
-	 * @return bool
-	 */
 	private function shouldBeDisplayed( $pluginData ) {
 		$glueCheckType  = isset( $pluginData['glue_check_type'] ) ? $pluginData['glue_check_type'] : null;
 		$glueCheckValue = isset( $pluginData['glue_check_value'] ) ? $pluginData['glue_check_value'] : null;
@@ -404,13 +343,6 @@ class RecommendationsManager {
 		return true;
 	}
 
-	/**
-	 * @param string $url
-	 * @param string $siteKey
-	 * @param string $siteUrl
-	 *
-	 * @return string
-	 */
 	private function appendSiteKeyToDownloadUrl( $url, $siteKey, $siteUrl ) {
 		return add_query_arg(
 			[
@@ -433,7 +365,6 @@ class RecommendationsManager {
 			}
 
 			foreach ( $recommendations as $recommendationSlug => $recommendation ) {
-				// Skip dismissed notices
 				if ( isset( $recommendation['notice_dismissed'] ) && $recommendation['notice_dismissed'] === true ) {
 					continue;
 				}
@@ -459,11 +390,6 @@ class RecommendationsManager {
 		return array_merge( $existingNotices, $notices );
 	}
 
-	/**
-	 * @param string $plugin
-	 *
-	 * @return GluePluginData
-	 */
 	private function getPluginData( $plugin ) {
 		$pluginSlug     = dirname( $plugin );
 		$gluePluginData = $this->getActivatedPluginGlue( $pluginSlug );
@@ -485,13 +411,6 @@ class RecommendationsManager {
 		return new GluePluginData( $pluginSlug, $gluePluginData );
 	}
 
-	/**
-	 * @param $repositoryId
-	 * @param $pluginData
-	 * @param $language
-	 *
-	 * @return array|null
-	 */
 	private function prepareRecommendedPluginData( $repositoryId, $pluginData, $language, $mappingData = null ) {
 		$repository   = $this->repositories->get( $repositoryId );
 		$subscription = $repository->get_subscription();

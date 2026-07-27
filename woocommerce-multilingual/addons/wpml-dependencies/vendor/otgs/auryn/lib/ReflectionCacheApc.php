@@ -27,7 +27,7 @@ class ReflectionCacheApc implements ReflectionCache
         if ($localData != false) {
             return $localData;
         } else {
-            $success = null; // stupid by-ref parameter that scrutinizer complains about
+            $success = null;
             $data = apc_fetch($key, $success);
             return $success ? $data : false;
         }

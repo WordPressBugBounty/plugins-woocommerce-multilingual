@@ -101,11 +101,6 @@ class OTGS_Installer_Repositories {
 		return $products;
 	}
 
-	/**
-	 * @param $id
-	 *
-	 * @return null|OTGS_Installer_Repository
-	 */
 	public function get( $id ) {
 		foreach ( $this->repositories() as $repository ) {
 			if ( $id === $repository->get_id() ) {

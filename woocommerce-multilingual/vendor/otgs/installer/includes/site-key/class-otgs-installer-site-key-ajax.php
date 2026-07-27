@@ -9,7 +9,6 @@ class OTGS_Installer_Site_Key_Ajax {
 	private $subscription_factory;
 	private $subscriptionManagerFactory;
 
-	/** @var OTGS_Installer_Site_Key_Remove_Service */
 	private $removeService;
 
 	public function __construct(
@@ -68,7 +67,6 @@ class OTGS_Installer_Site_Key_Ajax {
 				$this->clean_plugins_update_cache();
 				do_action( 'otgs_installer_site_key_update', $repository->get_id() );
 
-				// Checks if posthog should start recording for this site
 				do_action('check_posthog_should_record');
 			} else {
 				$error = __( 'Invalid site key for the current site.', 'installer' ) . '<br /><div class="installer-footnote">' . __( 'Please note that the site key is case sensitive.', 'installer' ) . '</div>';
@@ -122,7 +120,6 @@ class OTGS_Installer_Site_Key_Ajax {
 						) );
 						$repository->set_subscription( $subscription_data );
 
-						// Checks if posthog should start recording for this site
 						do_action('check_posthog_should_record');
 					} else {
 						do_action( 'otgs_installer_before_site_key_removal', $repository->get_id() );
@@ -195,15 +192,6 @@ class OTGS_Installer_Site_Key_Ajax {
 		do_action( 'otgs_installer_clean_plugins_update_cache' );
 	}
 
-	/**
-	 * @param $repositoryId
-	 * @param OTGS_Installer_Repository $repository
-	 * @param $site_key
-	 *
-	 * @return array
-	 * @throws OTGS_Installer_Fetch_Subscription_Exception
-	 * @throws \OTGS\Installer\Api\Exception\InvalidProductBucketUrl
-	 */
 	private function getSubscriptionData( $repositoryId, OTGS_Installer_Repository $repository, $source, $site_key ) {
 		$subscriptionManager = $this->subscriptionManagerFactory->create( $repositoryId, $repository->get_api_url() );
 		list ( $subscription, $site_key_data ) = $subscriptionManager->fetch( $site_key, $source );
